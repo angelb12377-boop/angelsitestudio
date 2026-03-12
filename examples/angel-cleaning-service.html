@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Example Cleaning Co. — Premium Cleaning Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #f5f0e8;
+      --bone: #ede7d9;
+      --sage: #7a9e87;
+      --sage-dark: #4e7260;
+      --charcoal: #2a2a2a;
+      --warm-gray: #8a8078;
+      --gold: #c9a96e;
+      --white: #fdfbf7;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--white);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
+
+    /* ── AD BANNER ── */
+    .ad-banner {
+      background: #f5c518; color: #111;
+      text-align: center; padding: 10px 20px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      position: relative; z-index: 200;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.4rem 4rem;
+      background: rgba(253, 251, 247, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--sage); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--warm-gray); text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--sage-dark); }
+    .nav-cta {
+      background: var(--sage); color: #fff;
+      border: none; padding: 0.65rem 1.6rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem; letter-spacing: 0.1em;
+      text-transform: uppercase; cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .nav-cta:hover { background: var(--sage-dark); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 6rem 4rem 6rem 6rem;
+    }
+    .hero-eyebrow {
+      font-size: 0.75rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s ease both;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      font-weight: 300; line-height: 1.08;
+      color: var(--charcoal);
+      animation: fadeUp 0.9s 0.1s ease both;
+    }
+    .hero-title em { font-style: italic; color: var(--sage); }
+    .hero-sub {
+      margin-top: 1.8rem;
+      font-size: 1rem; line-height: 1.75;
+      color: var(--warm-gray); max-width: 420px;
+      animation: fadeUp 1s 0.2s ease both;
+    }
+    .hero-actions {
+      margin-top: 2.8rem; display: flex; gap: 1.2rem; align-items: center;
+      animation: fadeUp 1s 0.3s ease both;
+    }
+    .btn-primary {
+      background: var(--charcoal); color: var(--cream);
+      padding: 1rem 2.2rem; border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem; letter-spacing: 0.1em;
+      text-transform: uppercase; cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--sage-dark); transform: translateY(-2px); }
+    .btn-ghost {
+      background: transparent; color: var(--charcoal);
+      border: 1.5px solid var(--charcoal);
+      padding: 1rem 2.2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem; letter-spacing: 0.1em;
+      text-transform: uppercase; cursor: pointer;
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .btn-ghost:hover { border-color: var(--sage); color: var(--sage-dark); }
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 1.2s 0.2s ease both;
+    }
+    .hero-right img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+
+    /* ── STRIP ── */
+    .strip {
+      background: var(--charcoal);
+      padding: 1.2rem 4rem;
+      display: flex; gap: 4rem; justify-content: center; align-items: center;
+      flex-wrap: wrap;
+    }
+    .strip-item {
+      display: flex; align-items: center; gap: 0.7rem;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .strip-item span:first-child { color: var(--gold); font-size: 1rem; }
+
+    /* ── SERVICES ── */
+    .section { padding: 7rem 6rem; }
+    .section-label {
+      font-size: 0.72rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 300; line-height: 1.15;
+      max-width: 540px;
+    }
+    .section-title em { font-style: italic; color: var(--sage); }
+
+    .services { padding: 5rem 6rem; background: var(--cream); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; margin-top: 4rem;
+    }
+    .service-card {
+      background: var(--white);
+      padding: 3rem 2.5rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: default;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 60px rgba(42,42,42,0.1);
+      z-index: 2; position: relative;
+    }
+    .service-icon {
+      width: 52px; height: 52px;
+      background: var(--bone);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 1.8rem;
+      transition: background 0.3s;
+    }
+    .service-card:hover .service-icon { background: var(--sage); }
+    .service-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 400; margin-bottom: 0.9rem;
+    }
+    .service-card p { font-size: 0.88rem; color: var(--warm-gray); line-height: 1.7; }
+    .service-tag {
+      display: inline-block; margin-top: 1.5rem;
+      font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--sage-dark); border-bottom: 1.5px solid var(--sage);
+      padding-bottom: 2px;
+    }
+
+    /* ── WHY ── */
+    .why {
+      padding: 7rem 6rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+      align-items: center;
+    }
+    .why-visual {
+      position: relative; height: 520px; overflow: hidden; border-radius: 4px;
+    }
+    .why-visual img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .why-stat-box {
+      position: absolute; bottom: 0; right: 0;
+      background: var(--sage);
+      color: #fff; padding: 2rem 2.5rem;
+    }
+    .why-stat-box .big {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem; font-weight: 300; display: block; line-height: 1;
+    }
+    .why-stat-box .small { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.85; }
+    .why-points { display: flex; flex-direction: column; gap: 1.8rem; margin-top: 2.5rem; }
+    .why-point { display: flex; gap: 1.2rem; }
+    .why-point-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0; margin-top: 6px;
+    }
+    .why-point h4 { font-size: 1rem; font-weight: 500; margin-bottom: 0.3rem; }
+    .why-point p { font-size: 0.85rem; color: var(--warm-gray); line-height: 1.65; }
+
+    /* ── PRICING ── */
+    .pricing { padding: 7rem 6rem; background: var(--charcoal); color: #fff; }
+    .pricing .section-title { color: #fff; max-width: 100%; }
+    .pricing .section-title em { color: var(--gold); }
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; margin-top: 4rem;
+    }
+    .pricing-card {
+      background: rgba(255,255,255,0.05);
+      padding: 3rem 2.5rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: background 0.3s, transform 0.3s;
+    }
+    .pricing-card.featured {
+      background: var(--sage);
+      border-color: var(--sage);
+    }
+    .pricing-card:not(.featured):hover {
+      background: rgba(255,255,255,0.09); transform: translateY(-4px);
+    }
+    .pricing-label {
+      font-size: 0.72rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .pricing-card.featured .pricing-label { color: rgba(255,255,255,0.75); }
+    .price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem; font-weight: 300; line-height: 1;
+    }
+    .price sup { font-size: 1.4rem; vertical-align: super; }
+    .price-note { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 0.4rem; }
+    .pricing-card.featured .price-note { color: rgba(255,255,255,0.7); }
+    .pricing-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 2rem 0; }
+    .pricing-card.featured .pricing-divider { border-color: rgba(255,255,255,0.25); }
+    .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
+    .pricing-features li { font-size: 0.87rem; display: flex; align-items: center; gap: 0.7rem; color: rgba(255,255,255,0.8); }
+    .pricing-features li::before { content: '\2713'; color: var(--gold); font-size: 0.9rem; }
+    .pricing-card.featured .pricing-features li::before { color: #fff; }
+    .pricing-btn {
+      width: 100%; margin-top: 2.5rem;
+      padding: 1rem; border: 1.5px solid rgba(255,255,255,0.3);
+      background: transparent; color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem; letter-spacing: 0.12em;
+      text-transform: uppercase; cursor: pointer;
+      transition: all 0.3s;
+    }
+    .pricing-btn:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.6); }
+    .pricing-card.featured .pricing-btn {
+      background: var(--charcoal); border-color: var(--charcoal);
+    }
+    .pricing-card.featured .pricing-btn:hover { background: #111; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { padding: 7rem 6rem; background: var(--cream); }
+    .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 4rem; }
+    .test-card { background: var(--white); padding: 2.5rem; }
+    .stars { color: var(--gold); font-size: 1rem; margin-bottom: 1.2rem; }
+    .test-card blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 300; font-style: italic;
+      line-height: 1.7; color: var(--charcoal); margin-bottom: 1.5rem;
+    }
+    .test-author { font-size: 0.82rem; font-weight: 500; letter-spacing: 0.06em; }
+    .test-role { font-size: 0.78rem; color: var(--warm-gray); }
+
+    /* ── BOOKING ── */
+    .booking {
+      padding: 7rem 6rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+      align-items: start;
+    }
+    .booking form { display: flex; flex-direction: column; gap: 1.2rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--warm-gray); }
+    .form-group input, .form-group select, .form-group textarea {
+      background: var(--cream); border: none;
+      padding: 0.9rem 1rem;
+      font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
+      color: var(--charcoal);
+      outline: none;
+      transition: box-shadow 0.3s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      box-shadow: 0 0 0 2px var(--sage);
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-submit {
+      background: var(--sage); color: #fff; border: none;
+      padding: 1.1rem; cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .form-submit:hover { background: var(--sage-dark); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal); color: rgba(255,255,255,0.6);
+      padding: 4rem 6rem 2rem;
+    }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
+    .footer-brand { color: #fff; font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 1rem; }
+    .footer-brand span { color: var(--sage); }
+    .footer-desc { font-size: 0.85rem; line-height: 1.7; }
+    .footer-heading { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: #fff; margin-bottom: 1.2rem; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .footer-links li { font-size: 0.85rem; cursor: pointer; transition: color 0.3s; }
+    .footer-links li:hover { color: var(--gold); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.78rem;
+    }
+    .ft-ad {
+      text-align: center; margin-top: 18px;
+      padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.7rem; color: rgba(255,255,255,0.18);
+      letter-spacing: 0.12em;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+    @keyframes floatCard {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-12px); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      nav { padding: 1.2rem 2rem; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { height: 50vw; }
+      .hero-left { padding: 4rem 2.5rem; }
+      .section, .services, .why, .pricing, .testimonials, .booking { padding: 4rem 2.5rem; }
+      .services-grid, .pricing-grid, .test-grid { grid-template-columns: 1fr 1fr; }
+      .why, .booking { grid-template-columns: 1fr; gap: 3rem; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .services-grid, .pricing-grid, .test-grid { grid-template-columns: 1fr; }
+      .hero-left { padding: 3rem 1.5rem; }
+      .section, .services, .why, .pricing, .testimonials, .booking { padding: 3rem 1.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+      footer { padding: 3rem 1.5rem 1.5rem; }
+    }
+
+    /* ANGEL SITE STUDIO — RETURN BUTTON */
+    .ass-return-btn {
+      position: fixed; top: 12px; left: 12px; z-index: 9999;
+      background: #3B82F6; color: #fff;
+      font-family: system-ui, sans-serif;
+      font-size: 0.78rem; font-weight: 600;
+      padding: 10px 18px; border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      display: flex; align-items: center; gap: 6px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .ass-return-btn:hover { background: #2563EB; transform: translateY(-1px); }
+
+    /* ANGEL SITE STUDIO — CONTACT POPUP */
+    .ass-popup-overlay {
+      display: none; position: fixed; inset: 0; z-index: 10000;
+      background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+      justify-content: center; align-items: center;
+    }
+    .ass-popup-overlay.active { display: flex; }
+    .ass-popup {
+      background: #fff; border-radius: 16px;
+      padding: 2.5rem 2rem 2rem; max-width: 480px; width: 92%;
+      position: relative; box-shadow: 0 24px 64px rgba(0,0,0,0.3);
+      animation: assSlideUp 0.3s ease-out;
+    }
+    @keyframes assSlideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .ass-popup-close {
+      position: absolute; top: 12px; right: 14px;
+      background: none; border: none;
+      font-size: 1.5rem; cursor: pointer;
+      color: #666; line-height: 1;
+    }
+    .ass-popup-close:hover { color: #111; }
+    .ass-popup h2 {
+      font-family: system-ui, sans-serif;
+      font-size: 1.3rem; font-weight: 700; color: #111;
+      margin-bottom: 0.25rem; text-align: center;
+    }
+    .ass-popup .ass-sub {
+      text-align: center; color: #666;
+      font-size: 0.88rem; margin-bottom: 1.25rem;
+    }
+    .ass-popup form { display: flex; flex-direction: column; gap: 0.75rem; }
+    .ass-popup label { font-size: 0.82rem; font-weight: 600; color: #333; }
+    .ass-popup input, .ass-popup textarea {
+      width: 100%; padding: 0.65rem 0.85rem;
+      border: 1.5px solid #ddd; border-radius: 8px;
+      font-family: inherit; font-size: 0.9rem;
+      transition: border-color 0.2s; box-sizing: border-box;
+    }
+    .ass-popup input:focus, .ass-popup textarea:focus {
+      outline: none; border-color: #3B82F6;
+    }
+    .ass-popup textarea { resize: vertical; min-height: 80px; }
+    .ass-popup-submit {
+      background: #3B82F6; color: #fff;
+      font-weight: 700; font-size: 1rem;
+      padding: 0.8rem; border: none; border-radius: 8px;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .ass-popup-submit:hover { background: #2563EB; }
+  </style>
+</head>
+<body>
+<a class="ass-return-btn" href="../index.html">&#8592; Angel Site Studio</a>
+
+<!-- AD DISCLAIMER -->
+<div class="ad-banner">&9888; For Advertisement &amp; Demonstration Purposes Only — Sample Website</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Example <span>Cleaning</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#book">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('book').scrollIntoView({behavior:'smooth'})">Book Now</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">&#10022; Luxury Home Cleaning</p>
+    <h1 class="hero-title">
+      Your home,<br><em>immaculate.</em><br>Always.
+    </h1>
+    <p class="hero-sub">
+      We bring meticulous care and professional-grade results to every room.
+      Trusted by families and property owners across the community.
+    </p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="document.getElementById('book').scrollIntoView({behavior:'smooth'})">Request a Quote</button>
+      <button class="btn-ghost" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">View Services</button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80&fit=crop" alt="Bright clean modern kitchen" loading="lazy">
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-item"><span>&#10003;</span> Insured &amp; Bonded</div>
+  <div class="strip-item"><span>&#10003;</span> Eco-Friendly Products</div>
+  <div class="strip-item"><span>&#10003;</span> Background-Checked Staff</div>
+  <div class="strip-item"><span>&#10003;</span> 100% Satisfaction Guarantee</div>
+  <div class="strip-item"><span>&#10003;</span> Same-Day Available</div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <p class="section-label">What We Offer</p>
+  <h2 class="section-title">Cleaning for every<br><em>need &amp; occasion</em></h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">&#127968;</div>
+      <h3>Standard Clean</h3>
+      <p>Regular upkeep for your home — dusting, vacuuming, mopping, bathrooms, and kitchen surfaces kept spotless week after week.</p>
+      <span class="service-tag">Most Popular &#8594;</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#129529;</div>
+      <h3>Deep Clean</h3>
+      <p>A thorough top-to-bottom treatment: inside appliances, baseboards, grout lines, window sills, and every forgotten corner.</p>
+      <span class="service-tag">Recommended First &#8594;</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#127970;</div>
+      <h3>Move In / Out</h3>
+      <p>Landlord-ready cleaning for tenants and property managers. We ensure units are pristine for inspections and new occupants.</p>
+      <span class="service-tag">Real Estate Ready &#8594;</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#127881;</div>
+      <h3>Post-Event</h3>
+      <p>After the party, let us handle the cleanup. Quick, efficient restoration of your space to its pre-event condition.</p>
+      <span class="service-tag">24hr Turnaround &#8594;</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#129695;</div>
+      <h3>Window Washing</h3>
+      <p>Interior and exterior window cleaning that lets the light in. Available as a standalone or add-on to any service.</p>
+      <span class="service-tag">Add-On Available &#8594;</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#127959;</div>
+      <h3>Post-Construction</h3>
+      <p>Dust, debris, and residue cleared after renovations. We restore your newly built or remodeled space to move-in condition.</p>
+      <span class="service-tag">Developer Friendly &#8594;</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="about">
+  <div class="why-visual">
+    <img src="https://images.unsplash.com/photo-1527515545081-5db817172677?w=900&q=80&fit=crop" alt="Clean bright living room interior" loading="lazy">
+    <div class="why-stat-box">
+      <span class="big">98%</span>
+      <span class="small">Client retention rate</span>
+    </div>
+  </div>
+  <div>
+    <p class="section-label">Why Choose Us</p>
+    <h2 class="section-title">The standard<br>others <em>aspire to</em></h2>
+    <div class="why-points">
+      <div class="why-point">
+        <div class="why-point-dot"></div>
+        <div>
+          <h4>Vetted Professionals</h4>
+          <p>Every team member is background-checked, trained in our proprietary process, and held to a strict quality standard on every visit.</p>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-point-dot"></div>
+        <div>
+          <h4>Non-Toxic, Eco Products</h4>
+          <p>We use plant-based, biodegradable solutions that are safe for children and pets — without compromising on effectiveness.</p>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-point-dot"></div>
+        <div>
+          <h4>Flexible Scheduling</h4>
+          <p>Weekly, bi-weekly, monthly, or one-time — we adapt to your life. Online booking with transparent, upfront pricing. No surprises.</p>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-point-dot"></div>
+        <div>
+          <h4>Satisfaction Guaranteed</h4>
+          <p>Not happy with a result? We come back within 24 hours at no cost. Your satisfaction is not a bonus — it's the baseline.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <p class="section-label" style="color:var(--gold)">Simple Pricing</p>
+  <h2 class="section-title">Transparent plans,<br><em>no hidden fees</em></h2>
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <p class="pricing-label">Essential</p>
+      <div class="price"><sup>$</sup>89</div>
+      <div class="price-note">per visit · up to 1,500 sq ft</div>
+      <hr class="pricing-divider"/>
+      <ul class="pricing-features">
+        <li>Kitchen &amp; bathrooms</li>
+        <li>Vacuuming &amp; mopping</li>
+        <li>Dusting all surfaces</li>
+        <li>Trash removal</li>
+        <li>Flexible scheduling</li>
+      </ul>
+      <button class="pricing-btn">Get Started</button>
+    </div>
+    <div class="pricing-card featured">
+      <p class="pricing-label">&#10022; Most Popular</p>
+      <div class="price"><sup>$</sup>149</div>
+      <div class="price-note">per visit · up to 3,000 sq ft</div>
+      <hr class="pricing-divider"/>
+      <ul class="pricing-features">
+        <li>Everything in Essential</li>
+        <li>Inside fridge &amp; oven</li>
+        <li>Baseboards &amp; blinds</li>
+        <li>Interior windows</li>
+        <li>Laundry (fold only)</li>
+        <li>Priority scheduling</li>
+      </ul>
+      <button class="pricing-btn">Get Started</button>
+    </div>
+    <div class="pricing-card">
+      <p class="pricing-label">Premier</p>
+      <div class="price"><sup>$</sup>249</div>
+      <div class="price-note">per visit · any size home</div>
+      <hr class="pricing-divider"/>
+      <ul class="pricing-features">
+        <li>Everything in Signature</li>
+        <li>Exterior windows</li>
+        <li>Garage &amp; patio</li>
+        <li>Dedicated team lead</li>
+        <li>Monthly deep clean</li>
+        <li>Same-day availability</li>
+      </ul>
+      <button class="pricing-btn">Get Started</button>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <p class="section-label">Client Stories</p>
+  <h2 class="section-title">Words from<br>those we <em>serve</em></h2>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <blockquote>"This team has transformed how I manage my properties. Every unit is handed back spotless — my tenants notice the difference immediately."</blockquote>
+      <div class="test-author">Marcus T.</div>
+      <div class="test-role">Property Developer · 12 units</div>
+    </div>
+    <div class="test-card">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <blockquote>"I've tried four cleaning services in two years. This is the only one I've stopped looking for alternatives to. Consistent, careful, trustworthy."</blockquote>
+      <div class="test-author">Diane R.</div>
+      <div class="test-role">Homeowner · Weekly client</div>
+    </div>
+    <div class="test-card">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <blockquote>"After our renovation, the post-construction clean was flawless. They handled dust in places the contractors didn't even know existed."</blockquote>
+      <div class="test-author">James &amp; Nora L.</div>
+      <div class="test-role">New build · 4,200 sq ft</div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="book">
+  <div>
+    <p class="section-label">Book a Clean</p>
+    <h2 class="section-title">Ready for an<br><em>immaculate</em> home?</h2>
+    <p style="margin-top:1.5rem;font-size:0.9rem;color:var(--warm-gray);line-height:1.75;max-width:380px;">
+      Fill out the form and we'll get back to you within 2 hours with a confirmed quote.
+      No commitment required — just clarity.
+    </p>
+    <div style="margin-top:2.5rem;display:flex;flex-direction:column;gap:1rem;">
+      <div style="display:flex;align-items:center;gap:0.8rem;font-size:0.85rem;color:var(--warm-gray)">
+        <span style="color:var(--sage);font-size:1.1rem">&#128222;</span> (555) 012-3456
+      </div>
+      <div style="display:flex;align-items:center;gap:0.8rem;font-size:0.85rem;color:var(--warm-gray)">
+        <span style="color:var(--sage);font-size:1.1rem">&#9993;</span> hello@examplecleaning.com
+      </div>
+      <div style="display:flex;align-items:center;gap:0.8rem;font-size:0.85rem;color:var(--warm-gray)">
+        <span style="color:var(--sage);font-size:1.1rem">&#128336;</span> Mon–Sat · 7am – 7pm
+      </div>
+    </div>
+  </div>
+  <form onsubmit="handleSubmit(event)">
+    <div class="form-row">
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" placeholder="Jane" required/>
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" placeholder="Smith" required/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" placeholder="jane@example.com" required/>
+    </div>
+    <div class="form-group">
+      <label>Phone</label>
+      <input type="tel" placeholder="(555) 000-0000"/>
+    </div>
+    <div class="form-group">
+      <label>Service Type</label>
+      <select>
+        <option>Standard Clean</option>
+        <option>Deep Clean</option>
+        <option>Move In / Out</option>
+        <option>Post-Construction</option>
+        <option>Post-Event</option>
+        <option>Window Washing</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Home Size</label>
+        <select>
+          <option>Under 1,000 sq ft</option>
+          <option>1,000–2,000 sq ft</option>
+          <option>2,000–3,500 sq ft</option>
+          <option>3,500+ sq ft</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Preferred Date</label>
+        <input type="date"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Additional Notes</label>
+      <textarea placeholder="Pets, special instructions, areas of focus..."></textarea>
+    </div>
+    <button class="form-submit" type="submit">Request My Quote &#8594;</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">Example <span>Cleaning</span></div>
+      <p class="footer-desc">Premium residential and commercial cleaning services. Meticulous, reliable, and always on time.</p>
+    </div>
+    <div>
+      <p class="footer-heading">Services</p>
+      <ul class="footer-links">
+        <li>Standard Clean</li>
+        <li>Deep Clean</li>
+        <li>Move In / Out</li>
+        <li>Post-Construction</li>
+        <li>Commercial</li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-heading">Company</p>
+      <ul class="footer-links">
+        <li>About Us</li>
+        <li>Our Team</li>
+        <li>Careers</li>
+        <li>Blog</li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-heading">Legal</p>
+      <ul class="footer-links">
+        <li>Privacy Policy</li>
+        <li>Terms of Service</li>
+        <li>Insurance Info</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Example Cleaning Co. All rights reserved.</span>
+    <span>Crafted with care &#10022;</span>
+  </div>
+  <div class="ft-ad">For Advertisement &amp; Demonstration Purposes Only</div>
+</footer>
+
+<!-- ANGEL SITE STUDIO — CONTACT POPUP -->
+<div class="ass-popup-overlay" id="assPopup">
+  <div class="ass-popup">
+    <button class="ass-popup-close" id="assPopupClose" aria-label="Close">&times;</button>
+    <h2>Want a website like this?</h2>
+    <p class="ass-sub">Get a free quote from Angel Site Studio!</p>
+    <form id="assPopupForm">
+      <div>
+        <label for="ass-name">Name</label>
+        <input id="ass-name" type="text" name="name" placeholder="John Smith" required>
+      </div>
+      <div>
+        <label for="ass-email">Email</label>
+        <input id="ass-email" type="email" name="email" placeholder="john@example.com" required>
+      </div>
+      <div>
+        <label for="ass-phone">Phone</label>
+        <input id="ass-phone" type="tel" name="phone" placeholder="(415) 555-0100">
+      </div>
+      <div>
+        <label for="ass-msg">Message</label>
+        <textarea id="ass-msg" name="message" placeholder="Tell us about your business..."></textarea>
+      </div>
+      <button class="ass-popup-submit" type="submit">Get My Free Quote &rarr;</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    var btn = e.target.querySelector('.form-submit');
+    btn.textContent = '\u2713 Request Received!';
+    btn.style.background = '#4e7260';
+    setTimeout(function() {
+      btn.textContent = 'Request My Quote \u2192';
+      btn.style.background = '';
+      e.target.reset();
+    }, 3000);
+  }
+
+  // Subtle scroll reveal
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(el) {
+      if (el.isIntersecting) {
+        el.target.style.opacity = '1';
+        el.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .pricing-card, .test-card, .why-point').forEach(function(el) {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+
+  // ANGEL SITE STUDIO — Link interception + popup
+  (function(){
+    var overlay = document.getElementById('assPopup');
+    var closeBtn = document.getElementById('assPopupClose');
+
+    function openPopup(e) { if (e) e.preventDefault(); overlay.classList.add('active'); }
+    function closePopup() { overlay.classList.remove('active'); }
+
+    closeBtn.addEventListener('click', closePopup);
+    overlay.addEventListener('click', function(e) { if (e.target === overlay) closePopup(); });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePopup(); });
+
+    document.addEventListener('click', function(e) {
+      var link = e.target.closest('a');
+      if (!link) return;
+      if (link.classList.contains('ass-return-btn')) return;
+      if (link.hostname && link.hostname !== location.hostname) return;
+      e.preventDefault();
+      overlay.classList.add('active');
+    });
+
+    document.querySelectorAll('form').forEach(function(form) {
+      if (form.id === 'assPopupForm') return;
+      form.addEventListener('submit', function(e) { e.preventDefault(); overlay.classList.add('active'); });
+    });
+
+    document.getElementById('assPopupForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var form = e.target;
+      var data = new FormData(form);
+      var btn = form.querySelector('.ass-popup-submit');
+      var orig = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      fetch('https://formspree.io/f/xnnqeqpz', {
+        method: 'POST', body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(function(r) {
+        if (r.ok) {
+          form.reset();
+          btn.textContent = 'Sent! We will be in touch.';
+          setTimeout(function() { closePopup(); btn.disabled = false; btn.textContent = orig; }, 2500);
+        } else {
+          btn.disabled = false; btn.textContent = orig;
+          alert('Something went wrong. Please try again or text us at (415) 660-0339.');
+        }
+      }).catch(function() {
+        btn.disabled = false; btn.textContent = orig;
+        alert('Network error. Please try again or text us at (415) 660-0339.');
+      });
+    });
+  })();
+</script>
+</body>
+</html>

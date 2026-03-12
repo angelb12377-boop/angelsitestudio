@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Example Restaurant | Fine Food & Catering</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream: #f7f2eb;
+  --cream-dark: #ede6d9;
+  --terracotta: #b85c38;
+  --terracotta-deep: #8f3f22;
+  --sage: #7a8c6e;
+  --sage-light: #a3b395;
+  --charcoal: #2c2a27;
+  --charcoal-soft: #3d3b37;
+  --warm-white: #faf8f5;
+  --gold: #c9a84c;
+  --gold-light: #dfc078;
+  --mid: #7a7570;
+  --light-rule: #dfd8cc;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  color: var(--charcoal);
+  background: var(--warm-white);
+  overflow-x: hidden;
+}
+a { text-decoration: none; color: inherit; }
+img { display: block; }
+
+/* ── AD BANNER ── */
+.ad-banner {
+  background: #f5c518; color: #111;
+  text-align: center; padding: 10px 20px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  position: relative; z-index: 200;
+}
+
+/* ── ANNOUNCEMENT BAR ── */
+.announce {
+  background: var(--charcoal);
+  padding: 10px 24px;
+  text-align: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--warm-white);
+  border-bottom: 1px solid var(--light-rule);
+  padding: 0 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: box-shadow 0.3s;
+}
+nav.scrolled { box-shadow: 0 4px 32px rgba(44,42,39,0.1); }
+.logo {
+  padding: 20px 0;
+  display: flex; flex-direction: column; align-items: flex-start;
+}
+.logo-main {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 1.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  line-height: 1;
+}
+.logo-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-top: 4px;
+}
+nav ul { display: flex; list-style: none; align-items: center; gap: 4px; }
+nav ul a {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mid);
+  padding: 8px 16px;
+  transition: color 0.2s;
+  display: block;
+  position: relative;
+}
+nav ul a::after {
+  content: '';
+  position: absolute; bottom: 4px; left: 16px; right: 16px; height: 1px;
+  background: var(--terracotta);
+  transform: scaleX(0); transition: transform 0.3s;
+}
+nav ul a:hover { color: var(--charcoal); }
+nav ul a:hover::after { transform: scaleX(1); }
+.nav-reserve {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 12px 28px;
+  background: var(--terracotta);
+  color: #fff;
+  margin-left: 12px;
+  transition: background 0.2s;
+}
+.nav-reserve:hover { background: var(--terracotta-deep); }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  height: 96vh; min-height: 620px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+}
+.hero-left {
+  background: var(--charcoal);
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding: 80px 80px 80px 80px;
+  position: relative; z-index: 2;
+}
+.hero-eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 28px;
+  animation: fadeUp 0.8s ease both;
+}
+.hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
+.hero-h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(3.8rem, 6vw, 6rem);
+  line-height: 1.0;
+  color: var(--cream);
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+  animation: fadeUp 0.8s 0.12s ease both;
+}
+.hero-h1 em {
+  font-style: italic;
+  color: var(--gold-light);
+  display: block;
+}
+.hero-desc {
+  font-size: 0.9rem;
+  line-height: 1.85;
+  color: rgba(247,242,235,0.65);
+  max-width: 400px;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  animation: fadeUp 0.8s 0.24s ease both;
+}
+.hero-btns {
+  display: flex; gap: 14px; align-items: center;
+  animation: fadeUp 0.8s 0.36s ease both;
+}
+.btn-primary {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 16px 34px;
+  background: var(--terracotta);
+  color: #fff;
+  transition: background 0.2s;
+  display: inline-block;
+}
+.btn-primary:hover { background: var(--terracotta-deep); }
+.btn-ghost {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 16px 34px;
+  border: 1px solid rgba(247,242,235,0.35);
+  color: rgba(247,242,235,0.8);
+  transition: all 0.2s;
+  display: inline-block;
+}
+.btn-ghost:hover { border-color: var(--cream); color: var(--cream); }
+.hero-right {
+  position: relative; overflow: hidden;
+}
+.hero-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transform: scale(1.05);
+  animation: heroZoom 14s ease-out forwards;
+}
+@keyframes heroZoom { from { transform: scale(1.05); } to { transform: scale(1.0); } }
+.hero-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(44,42,39,0.3) 0%, transparent 50%);
+}
+.hero-stat-strip {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: rgba(44,42,39,0.88);
+  backdrop-filter: blur(8px);
+  padding: 20px 40px;
+  display: flex; justify-content: space-around;
+  z-index: 3;
+}
+.stat { text-align: center; }
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  line-height: 1;
+}
+.stat-lbl {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(247,242,235,0.5);
+  margin-top: 4px;
+}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── LABEL / SECTION TAG ── */
+.stag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.66rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 16px;
+}
+.stag::before { content: ''; display: block; width: 24px; height: 1px; background: currentColor; }
+.stag.sage { color: var(--sage); }
+.stag.gold { color: var(--gold); }
+
+/* ── PHILOSOPHY SPLIT ── */
+.philosophy {
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: 520px;
+}
+.phil-img {
+  position: relative; overflow: hidden;
+}
+.phil-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.phil-img:hover img { transform: scale(1.03); }
+.phil-badge {
+  position: absolute; bottom: 36px; right: -1px;
+  background: var(--terracotta);
+  color: #fff;
+  padding: 18px 28px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.92rem;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  max-width: 220px;
+  line-height: 1.4;
+}
+.phil-text {
+  background: var(--cream);
+  padding: 80px 72px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.phil-text h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(2.2rem, 3vw, 3rem);
+  line-height: 1.15;
+  color: var(--charcoal);
+  margin-bottom: 24px;
+}
+.phil-text h2 em { font-style: italic; color: var(--terracotta); }
+.phil-text p {
+  font-size: 0.92rem;
+  line-height: 1.9;
+  color: var(--mid);
+  margin-bottom: 14px;
+  max-width: 440px;
+}
+.phil-text .btn-primary { margin-top: 12px; align-self: flex-start; }
+
+/* ── SERVICES ── */
+.services {
+  background: var(--charcoal);
+  padding: 96px 64px;
+}
+.services-inner { max-width: 1200px; margin: 0 auto; }
+.services-head {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 52px;
+}
+.services-head h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  color: var(--cream);
+  line-height: 1.15;
+}
+.services-head h2 em { font-style: italic; color: var(--gold-light); }
+.services-head p {
+  font-size: 0.85rem;
+  color: rgba(247,242,235,0.5);
+  max-width: 320px;
+  text-align: right;
+  line-height: 1.75;
+}
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+.svc-card {
+  background: var(--charcoal-soft);
+  padding: 40px 32px;
+  position: relative; overflow: hidden;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.svc-card::after {
+  content: '';
+  position: absolute; left: 0; bottom: 0; right: 0; height: 2px;
+  background: var(--terracotta);
+  transform: scaleX(0); transition: transform 0.35s;
+  transform-origin: left;
+}
+.svc-card:hover { background: #36342f; }
+.svc-card:hover::after { transform: scaleX(1); }
+.svc-icon {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  display: block;
+}
+.svc-num {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  color: var(--terracotta);
+  opacity: 0.8;
+  margin-bottom: 12px;
+  display: block;
+}
+.svc-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+.svc-card p {
+  font-size: 0.82rem;
+  color: rgba(247,242,235,0.48);
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+.svc-arrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  transition: transform 0.2s;
+  display: inline-block;
+}
+.svc-card:hover .svc-arrow { transform: translateX(6px); }
+
+/* ── MENU PREVIEW ── */
+.menu-sec {
+  background: var(--warm-white);
+  padding: 96px 64px;
+}
+.menu-inner { max-width: 1200px; margin: 0 auto; }
+.menu-header { margin-bottom: 56px; }
+.menu-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+  line-height: 1.1;
+  color: var(--charcoal);
+  margin-bottom: 14px;
+}
+.menu-header h2 em { font-style: italic; color: var(--sage); }
+.menu-header p { font-size: 0.88rem; color: var(--mid); max-width: 520px; line-height: 1.8; }
+.menu-tabs {
+  display: flex; gap: 0; margin-bottom: 44px;
+  border-bottom: 1px solid var(--light-rule);
+}
+.mtab {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 12px 28px;
+  color: var(--mid);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s;
+  background: none; border: none;
+}
+.mtab.active { color: var(--charcoal); }
+.mtab.active::after {
+  content: '';
+  position: absolute; bottom: -1px; left: 0; right: 0; height: 2px;
+  background: var(--terracotta);
+}
+.mtab:hover { color: var(--charcoal); }
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.menu-col { padding-right: 60px; }
+.menu-col:last-child { padding-right: 0; padding-left: 60px; border-left: 1px solid var(--light-rule); }
+.menu-item {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--light-rule);
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 16px;
+}
+.menu-item:first-child { border-top: 1px solid var(--light-rule); }
+.menu-item-text h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--charcoal);
+  margin-bottom: 4px;
+}
+.menu-item-text p {
+  font-size: 0.78rem;
+  color: var(--mid);
+  line-height: 1.55;
+}
+.menu-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--terracotta);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.menu-cta { margin-top: 48px; text-align: center; }
+
+/* ── GALLERY ── */
+.gallery-sec {
+  background: var(--cream-dark);
+  padding: 0;
+}
+.gallery-head {
+  padding: 80px 64px 40px;
+}
+.gallery-head h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+  color: var(--charcoal);
+}
+.gallery-head h2 em { font-style: italic; color: var(--terracotta); }
+.gal-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 300px 300px;
+  gap: 3px;
+}
+.gal-item { position: relative; overflow: hidden; cursor: pointer; }
+.gal-item.tall { grid-row: 1 / 3; }
+.gal-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.55s ease;
+}
+.gal-item:hover img { transform: scale(1.06); }
+.gal-ov {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(44,42,39,0.7) 0%, transparent 55%);
+  opacity: 0; transition: opacity 0.35s;
+}
+.gal-item:hover .gal-ov { opacity: 1; }
+.gal-label {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 22px 24px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--cream);
+  z-index: 2;
+  transform: translateY(8px); transition: transform 0.35s;
+}
+.gal-item:hover .gal-label { transform: translateY(0); }
+
+/* ── TESTIMONIALS ── */
+.testimonials {
+  background: var(--warm-white);
+  padding: 96px 64px;
+}
+.testi-inner { max-width: 1100px; margin: 0 auto; }
+.testi-head { text-align: center; margin-bottom: 60px; }
+.testi-head h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  color: var(--charcoal);
+}
+.testi-head h2 em { font-style: italic; color: var(--terracotta); }
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.testi-card {
+  background: var(--cream);
+  padding: 42px 36px;
+  position: relative;
+  border-top: 2px solid var(--terracotta);
+}
+.testi-q {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4.5rem;
+  line-height: 0.6;
+  color: var(--terracotta);
+  opacity: 0.3;
+  display: block;
+  margin-bottom: 18px;
+}
+.testi-card p {
+  font-size: 0.88rem;
+  line-height: 1.85;
+  color: var(--mid);
+  margin-bottom: 28px;
+  font-style: italic;
+}
+.testi-auth {
+  display: flex; align-items: center; gap: 14px;
+}
+.testi-av {
+  width: 42px; height: 42px;
+  background: var(--terracotta);
+  color: #fff;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.testi-info strong {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  display: block;
+}
+.testi-info span {
+  font-size: 0.72rem;
+  color: var(--mid);
+}
+
+/* ── CTA BAND ── */
+.cta-band {
+  background: var(--terracotta);
+  padding: 80px 64px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 40px;
+}
+.cta-band-left h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+.cta-band-left h2 em { font-style: italic; }
+.cta-band-left p {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.75;
+  max-width: 520px;
+}
+.btn-white {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 18px 42px;
+  background: #fff;
+  color: var(--terracotta);
+  white-space: nowrap;
+  transition: all 0.2s;
+  display: inline-block;
+}
+.btn-white:hover { background: var(--cream); }
+
+/* ── TEAM / CHEFS ── */
+.team-sec {
+  background: var(--charcoal);
+  padding: 96px 64px;
+}
+.team-inner { max-width: 1200px; margin: 0 auto; }
+.team-header { margin-bottom: 56px; }
+.team-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  color: var(--cream);
+}
+.team-header h2 em { font-style: italic; color: var(--gold-light); }
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.chef-card { cursor: pointer; }
+.chef-img {
+  width: 100%; aspect-ratio: 3/4;
+  overflow: hidden;
+  margin-bottom: 18px;
+  position: relative;
+}
+.chef-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: grayscale(40%);
+  transition: filter 0.4s, transform 0.5s;
+}
+.chef-card:hover .chef-img img { filter: grayscale(0%); transform: scale(1.04); }
+.chef-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 4px;
+}
+.chef-title {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+}
+
+/* ── CONTACT ── */
+.contact-sec {
+  background: var(--cream);
+  padding: 96px 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+}
+.contact-info h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  line-height: 1.15;
+  color: var(--charcoal);
+  margin-bottom: 20px;
+}
+.contact-info h2 em { font-style: italic; color: var(--terracotta); }
+.contact-info p {
+  font-size: 0.88rem;
+  line-height: 1.9;
+  color: var(--mid);
+  margin-bottom: 32px;
+  max-width: 400px;
+}
+.contact-detail {
+  display: flex; align-items: flex-start; gap: 16px;
+  margin-bottom: 20px;
+}
+.contact-detail .icon {
+  width: 36px; height: 36px;
+  background: var(--terracotta);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.contact-detail-text strong {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  display: block;
+  margin-bottom: 2px;
+}
+.contact-detail-text span {
+  font-size: 0.88rem;
+  color: var(--mid);
+}
+.contact-form { display: flex; flex-direction: column; gap: 16px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  color: var(--charcoal);
+  background: var(--warm-white);
+  border: 1px solid var(--light-rule);
+  padding: 12px 16px;
+  transition: border-color 0.2s;
+  outline: none;
+  resize: vertical;
+  width: 100%;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--terracotta);
+}
+.form-group textarea { min-height: 100px; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--charcoal);
+  padding: 64px 64px 32px;
+}
+.ft-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(247,242,235,0.1);
+  margin-bottom: 32px;
+}
+.ft-brand p {
+  font-size: 0.84rem;
+  line-height: 1.85;
+  color: rgba(247,242,235,0.45);
+  margin-top: 18px;
+  max-width: 300px;
+}
+.ft-col h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+.ft-col ul { list-style: none; }
+.ft-col ul li { margin-bottom: 10px; }
+.ft-col ul li a {
+  font-size: 0.84rem;
+  color: rgba(247,242,235,0.5);
+  transition: color 0.2s;
+}
+.ft-col ul li a:hover { color: var(--cream); }
+.ft-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.75rem;
+  color: rgba(247,242,235,0.28);
+}
+.ft-bottom a { color: rgba(247,242,235,0.28); transition: color 0.2s; }
+.ft-bottom a:hover { color: var(--cream); }
+
+/* ── SCROLL ANIMATION ── */
+.reveal {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ANGEL SITE STUDIO — RETURN BUTTON */
+.ass-return-btn {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 9999;
+  background: #3B82F6;
+  color: #fff;
+  font-family: system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s, transform 0.2s;
+}
+.ass-return-btn:hover {
+  background: #2563EB;
+  transform: translateY(-1px);
+}
+
+/* ANGEL SITE STUDIO — CONTACT POPUP */
+.ass-popup-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+}
+.ass-popup-overlay.active { display: flex; }
+.ass-popup {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2.5rem 2rem 2rem;
+  max-width: 480px;
+  width: 92%;
+  position: relative;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.3);
+  animation: assSlideUp 0.3s ease-out;
+}
+@keyframes assSlideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.ass-popup-close {
+  position: absolute;
+  top: 12px; right: 14px;
+  background: none; border: none;
+  font-size: 1.5rem; cursor: pointer;
+  color: #666; line-height: 1;
+}
+.ass-popup-close:hover { color: #111; }
+.ass-popup h2 {
+  font-family: system-ui, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 0.25rem;
+  text-align: center;
+}
+.ass-popup .ass-sub {
+  text-align: center;
+  color: #666;
+  font-size: 0.88rem;
+  margin-bottom: 1.25rem;
+}
+.ass-popup form { display: flex; flex-direction: column; gap: 0.75rem; }
+.ass-popup label { font-size: 0.82rem; font-weight: 600; color: #333; }
+.ass-popup input,
+.ass-popup textarea {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+.ass-popup input:focus,
+.ass-popup textarea:focus {
+  outline: none;
+  border-color: #3B82F6;
+}
+.ass-popup textarea { resize: vertical; min-height: 80px; }
+.ass-popup-submit {
+  background: #3B82F6;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.ass-popup-submit:hover { background: #2563EB; }
+</style>
+</head>
+<body>
+<a class="ass-return-btn" href="../index.html">&#8592; Angel Site Studio</a>
+
+<!-- AD DISCLAIMER -->
+<div class="ad-banner">⚠ For Advertisement &amp; Demonstration Purposes Only — Sample Website</div>
+
+<!-- ANNOUNCE -->
+<div class="announce">Now booking private events &amp; corporate catering — Reserve your date for 2025</div>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="logo">
+    <span class="logo-main">Example Restaurant</span>
+    <span class="logo-sub">Fine Food &amp; Catering</span>
+  </div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#menu">Menus</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#team">Our Chefs</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-reserve">Reserve →</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Est. 2011</div>
+    <h1 class="hero-h1">
+      Food is<br>our
+      <em>finest art.</em>
+    </h1>
+    <p class="hero-desc">
+      Example Restaurant crafts exceptional dining experiences — from intimate private dinners
+      to grand corporate events — with seasonal ingredients and refined technique.
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Book a Consultation</a>
+      <a href="#menu" class="btn-ghost">Explore Menus</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-img"
+      src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=85&fit=crop"
+      alt="Elegant fine dining plate presentation">
+    <div class="hero-img-overlay"></div>
+    <div class="hero-stat-strip">
+      <div class="stat">
+        <div class="stat-num">14+</div>
+        <div class="stat-lbl">Years of Service</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3,200+</div>
+        <div class="stat-lbl">Events Catered</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">8</div>
+        <div class="stat-lbl">Michelin-Trained Chefs</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-lbl">Seasonal Sourcing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy" id="about">
+  <div class="phil-img">
+    <img src="https://images.unsplash.com/photo-1555244162-803834f70033?w=900&q=80&fit=crop" alt="Chef preparing a dish">
+    <div class="phil-badge">
+      "Every plate tells a story of the land it came from."
+    </div>
+  </div>
+  <div class="phil-text">
+    <p class="stag">Our Philosophy</p>
+    <h2>Rooted in place.<br><em>Elevated by craft.</em></h2>
+    <p>We believe that extraordinary dining begins long before anyone sets foot in the kitchen. It starts at the farm, the market, the coastline — wherever the finest ingredients are born.</p>
+    <p>Our team of culinary artists works with over 40 regional producers to bring you menus that change with the seasons, respect the ingredient, and honor the guest.</p>
+    <a href="#contact" class="btn-primary">Learn More About Us</a>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="services-head reveal">
+      <div>
+        <p class="stag gold">What We Offer</p>
+        <h2>A full suite of<br><em>culinary experiences</em></h2>
+      </div>
+      <p>From intimate gatherings to large-scale corporate productions, our team delivers with the same care and artistry at every scale.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card reveal reveal-delay-1">
+        <span class="svc-icon">🍽️</span>
+        <span class="svc-num">01</span>
+        <h3>Private Dining</h3>
+        <p>Bespoke multi-course experiences in your home, venue, or one of our curated spaces.</p>
+        <span class="svc-arrow">Inquire →</span>
+      </div>
+      <div class="svc-card reveal reveal-delay-2">
+        <span class="svc-icon">🥂</span>
+        <span class="svc-num">02</span>
+        <h3>Corporate Catering</h3>
+        <p>Elevate your next meeting, conference, or client event with food that makes an impression.</p>
+        <span class="svc-arrow">Inquire →</span>
+      </div>
+      <div class="svc-card reveal reveal-delay-3">
+        <span class="svc-icon">💒</span>
+        <span class="svc-num">03</span>
+        <h3>Wedding &amp; Events</h3>
+        <p>Your most important day deserves a culinary team that matches your vision with precision.</p>
+        <span class="svc-arrow">Inquire →</span>
+      </div>
+      <div class="svc-card reveal">
+        <span class="svc-icon">🎓</span>
+        <span class="svc-num">04</span>
+        <h3>Cooking Classes</h3>
+        <p>Interactive experiences led by our chef team — perfect for team-building or personal enrichment.</p>
+        <span class="svc-arrow">Inquire →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU PREVIEW -->
+<section class="menu-sec" id="menu">
+  <div class="menu-inner">
+    <div class="menu-header reveal">
+      <p class="stag sage">Seasonal Offerings</p>
+      <h2>A taste of what<br><em>awaits you</em></h2>
+      <p>Our menus are crafted each season by Executive Chef Laurent Moreau. Below is a glimpse — full menus are tailored to your event.</p>
+    </div>
+    <div class="menu-tabs">
+      <button class="mtab active" onclick="setTab(this, 'starters')">Starters</button>
+      <button class="mtab" onclick="setTab(this, 'mains')">Mains</button>
+      <button class="mtab" onclick="setTab(this, 'desserts')">Desserts</button>
+      <button class="mtab" onclick="setTab(this, 'drinks')">Beverages</button>
+    </div>
+    <div id="tab-content">
+      <div class="menu-grid">
+        <div class="menu-col">
+          <div class="menu-item">
+            <div class="menu-item-text">
+              <h4>Heirloom Tomato Tarte Tatin</h4>
+              <p>Puff pastry, aged goat cheese, basil oil, micro shiso</p>
+            </div>
+            <span class="menu-price">$18</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-text">
+              <h4>Seared Diver Scallops</h4>
+              <p>Cauliflower purée, pickled golden raisin, pancetta crisp</p>
+            </div>
+            <span class="menu-price">$26</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-text">
+              <h4>Chilled Cucumber Gazpacho</h4>
+              <p>Yogurt foam, dill oil, compressed watermelon</p>
+            </div>
+            <span class="menu-price">$14</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-text">
+              <h4>Duck Liver Terrine</h4>
+              <p>Brioche toast, fig jam, cornichon, Dijon</p>
+            </div>
+            <span class="menu-price">$22</span>
+          </div>
+        </div>
+        <div class="menu-col">
+          <div class="menu-item">
+            <div class="menu-item-text">
+              <h4>Burrata &amp; Stone Fruit</h4>
+              <p>Grilled peaches, prosciutto, pistachio dust, aged balsamic</p>
+            </div>
+            <span class="menu-price">$19</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-text">
+              <h4>Blue Crab Bisque</h4>
+              <p>Cognac crème, chive oil, brioche croutons</p>
+            </div>
+            <span class="menu-price">$21</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-text">
+              <h4>Roasted Beet Salad</h4>
+              <p>Candied walnuts, whipped feta, endive, sherry vinaigrette</p>
+            </div>
+            <span class="menu-price">$15</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-text">
+              <h4>Ricotta Gnudi</h4>
+              <p>Brown butter, crispy sage, hazelnuts, aged pecorino</p>
+            </div>
+            <span class="menu-price">$17</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-cta">
+      <a href="#contact" class="btn-primary">Request Full Menu &amp; Pricing</a>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-sec" id="gallery">
+  <div class="gallery-head reveal">
+    <p class="stag">From Our Table</p>
+    <h2>Moments we've <em>crafted</em></h2>
+  </div>
+  <div class="gal-grid">
+    <div class="gal-item tall">
+      <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80&fit=crop" alt="Plated fine dining">
+      <div class="gal-ov"></div>
+      <span class="gal-label">Signature Tasting Menu</span>
+    </div>
+    <div class="gal-item">
+      <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=600&q=80&fit=crop" alt="Pasta dish">
+      <div class="gal-ov"></div>
+      <span class="gal-label">House-Made Pasta</span>
+    </div>
+    <div class="gal-item">
+      <img src="https://images.unsplash.com/photo-1470219556762-1771e7f9427d?w=600&q=80&fit=crop" alt="Dessert plate">
+      <div class="gal-ov"></div>
+      <span class="gal-label">Pastry Arts</span>
+    </div>
+    <div class="gal-item">
+      <img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=600&q=80&fit=crop" alt="Brunch spread">
+      <div class="gal-ov"></div>
+      <span class="gal-label">Weekend Brunch</span>
+    </div>
+    <div class="gal-item">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80&fit=crop" alt="Overhead food spread">
+      <div class="gal-ov"></div>
+      <span class="gal-label">Seasonal Harvest Table</span>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testi-inner">
+    <div class="testi-head reveal">
+      <p class="stag" style="justify-content:center;">Guest Voices</p>
+      <h2>What our guests <em>remember</em></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal reveal-delay-1">
+        <span class="testi-q">"</span>
+        <p>Example Restaurant transformed our annual gala into something out of a dream. Every dish was perfectly timed, beautifully presented, and absolutely delicious. Our guests are still talking about it.</p>
+        <div class="testi-auth">
+          <div class="testi-av">SH</div>
+          <div class="testi-info">
+            <strong>Sarah Hammond</strong>
+            <span>VP, Pinnacle Events Group</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal reveal-delay-2">
+        <span class="testi-q">"</span>
+        <p>We hired Example Restaurant for our wedding reception and were blown away. Chef Laurent worked with us personally on a custom menu that honored both of our family heritages. Truly unforgettable.</p>
+        <div class="testi-auth">
+          <div class="testi-av">MR</div>
+          <div class="testi-info">
+            <strong>Marcus &amp; Reyna Torres</strong>
+            <span>Private Wedding Reception</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal reveal-delay-3">
+        <span class="testi-q">"</span>
+        <p>Our quarterly board dinners used to be an afterthought. Since partnering with Example Restaurant, they've become the highlight of our executive calendar. The attention to detail is extraordinary.</p>
+        <div class="testi-auth">
+          <div class="testi-av">JC</div>
+          <div class="testi-info">
+            <strong>James Caldwell</strong>
+            <span>CEO, Cornerstone Capital</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="cta-band-left">
+    <h2>Ready to plan something <em>extraordinary?</em></h2>
+    <p>Tell us about your event and one of our culinary consultants will be in touch within 24 hours to begin crafting your experience.</p>
+  </div>
+  <a href="#contact" class="btn-white">Start Planning →</a>
+</section>
+
+<!-- TEAM -->
+<section class="team-sec" id="team">
+  <div class="team-inner">
+    <div class="team-header reveal">
+      <p class="stag gold">The Kitchen</p>
+      <h2>The hands behind<br><em>every great meal</em></h2>
+    </div>
+    <div class="team-grid">
+      <div class="chef-card reveal reveal-delay-1">
+        <div class="chef-img">
+          <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=500&q=80&fit=crop" alt="Executive Chef">
+        </div>
+        <div class="chef-name">Laurent Moreau</div>
+        <div class="chef-title">Executive Chef &amp; Founder</div>
+      </div>
+      <div class="chef-card reveal reveal-delay-2">
+        <div class="chef-img">
+          <img src="https://images.unsplash.com/photo-1607631568010-a87245c0daf8?w=500&q=80&fit=crop" alt="Pastry Chef">
+        </div>
+        <div class="chef-name">Amara Osei</div>
+        <div class="chef-title">Executive Pastry Chef</div>
+      </div>
+      <div class="chef-card reveal reveal-delay-3">
+        <div class="chef-img">
+          <img src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?w=500&q=80&fit=crop" alt="Sous Chef">
+        </div>
+        <div class="chef-name">Diego Restrepo</div>
+        <div class="chef-title">Sous Chef, Events</div>
+      </div>
+      <div class="chef-card reveal">
+        <div class="chef-img">
+          <img src="https://images.unsplash.com/photo-1595273670150-bd0c3c392e46?w=500&q=80&fit=crop" alt="Sommelier">
+        </div>
+        <div class="chef-name">Claire Fontaine</div>
+        <div class="chef-title">Head Sommelier</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-sec" id="contact">
+  <div class="contact-info reveal">
+    <p class="stag">Get in Touch</p>
+    <h2>Let's create something <em>memorable.</em></h2>
+    <p>Whether you have a fully planned event or just a vision, we're ready to help you build an experience that exceeds every expectation.</p>
+    <div class="contact-detail">
+      <div class="icon">📍</div>
+      <div class="contact-detail-text">
+        <strong>Studio &amp; HQ</strong>
+        <span>123 Main Street, Suite 200</span>
+      </div>
+    </div>
+    <div class="contact-detail">
+      <div class="icon">📞</div>
+      <div class="contact-detail-text">
+        <strong>Phone</strong>
+        <span>(555) 422-8810</span>
+      </div>
+    </div>
+    <div class="contact-detail">
+      <div class="icon">✉️</div>
+      <div class="contact-detail-text">
+        <strong>Email</strong>
+        <span>hello@maisontable.com</span>
+      </div>
+    </div>
+    <div class="contact-detail">
+      <div class="icon">🕐</div>
+      <div class="contact-detail-text">
+        <strong>Office Hours</strong>
+        <span>Mon–Fri 9am–6pm · Sat 10am–3pm</span>
+      </div>
+    </div>
+  </div>
+  <div class="contact-form reveal reveal-delay-2">
+    <div class="form-row">
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" placeholder="Laurent">
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" placeholder="Moreau">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Email Address</label>
+      <input type="email" placeholder="you@example.com">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Event Type</label>
+        <select>
+          <option value="">Select service</option>
+          <option>Private Dining</option>
+          <option>Corporate Catering</option>
+          <option>Wedding &amp; Events</option>
+          <option>Cooking Class</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Estimated Guest Count</label>
+        <input type="text" placeholder="e.g. 80 guests">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Event Date</label>
+      <input type="date">
+    </div>
+    <div class="form-group">
+      <label>Tell us about your vision</label>
+      <textarea placeholder="Share details about your event, theme, dietary requirements, or any special requests..."></textarea>
+    </div>
+    <a href="#" class="btn-primary" style="text-align:center;">Send Inquiry →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-top">
+    <div class="ft-brand">
+      <div class="logo">
+        <span class="logo-main">Example Restaurant</span>
+        <span class="logo-sub">Fine Food &amp; Catering</span>
+      </div>
+      <p>Crafting exceptional culinary experiences since 2011. Every event is a masterpiece waiting to be made.</p>
+    </div>
+    <div class="ft-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">Our Story</a></li>
+        <li><a href="#">The Team</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Press</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Private Dining</a></li>
+        <li><a href="#">Corporate Events</a></li>
+        <li><a href="#">Weddings</a></li>
+        <li><a href="#">Cooking Classes</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Pinterest</a></li>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Newsletter</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <span>© 2025 Example Restaurant LLC. All rights reserved.</span>
+    <div style="display:flex;gap:24px;">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+
+// Menu tabs (visual only)
+function setTab(btn, tab) {
+  document.querySelectorAll('.mtab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+}
+</script>
+
+<!-- ANGEL SITE STUDIO — CONTACT POPUP -->
+<div class="ass-popup-overlay" id="assPopup">
+  <div class="ass-popup">
+    <button class="ass-popup-close" id="assPopupClose" aria-label="Close">&times;</button>
+    <h2>Want a website like this?</h2>
+    <p class="ass-sub">Get a free quote from Angel Site Studio!</p>
+    <form id="assPopupForm">
+      <div>
+        <label for="ass-name">Name</label>
+        <input id="ass-name" type="text" name="name" placeholder="John Smith" required>
+      </div>
+      <div>
+        <label for="ass-email">Email</label>
+        <input id="ass-email" type="email" name="email" placeholder="john@example.com" required>
+      </div>
+      <div>
+        <label for="ass-phone">Phone</label>
+        <input id="ass-phone" type="tel" name="phone" placeholder="(415) 555-0100">
+      </div>
+      <div>
+        <label for="ass-msg">Message</label>
+        <textarea id="ass-msg" name="message" placeholder="Tell us about your business..."></textarea>
+      </div>
+      <button class="ass-popup-submit" type="submit">Get My Free Quote &rarr;</button>
+    </form>
+  </div>
+</div>
+
+<script>
+(function(){
+  var overlay = document.getElementById('assPopup');
+  var closeBtn = document.getElementById('assPopupClose');
+
+  function openPopup(e) {
+    if (e) e.preventDefault();
+    overlay.classList.add('active');
+  }
+  function closePopup() {
+    overlay.classList.remove('active');
+  }
+
+  closeBtn.addEventListener('click', closePopup);
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closePopup();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closePopup();
+  });
+
+  // Intercept ALL internal links except the return button
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a');
+    if (!link) return;
+    if (link.classList.contains('ass-return-btn')) return;
+    if (link.hostname && link.hostname !== location.hostname) return;
+    e.preventDefault();
+    overlay.classList.add('active');
+  });
+
+  // Intercept example site form submits (not our popup form)
+  document.querySelectorAll('form').forEach(function(form) {
+    if (form.id === 'assPopupForm') return;
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      overlay.classList.add('active');
+    });
+  });
+
+  // Handle our popup form submit
+  document.getElementById('assPopupForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var form = e.target;
+    var data = new FormData(form);
+    var btn = form.querySelector('.ass-popup-submit');
+    var orig = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    // Send to Angel Site Studio contact
+    fetch('https://formspree.io/f/xnnqeqpz', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        form.reset();
+        btn.textContent = 'Sent! We will be in touch.';
+        setTimeout(function() { closePopup(); btn.disabled = false; btn.textContent = orig; }, 2500);
+      } else {
+        btn.disabled = false;
+        btn.textContent = orig;
+        alert('Something went wrong. Please try again or text us at (415) 660-0339.');
+      }
+    }).catch(function() {
+      btn.disabled = false;
+      btn.textContent = orig;
+      alert('Network error. Please try again or text us at (415) 660-0339.');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

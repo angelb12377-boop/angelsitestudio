@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Example Landscaping Co. | We Grow Beautiful™</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --forest:    #1b3829;
+    --forest-dk: #112318;
+    --forest-md: #254d38;
+    --lime:      #c5de3c;
+    --lime-lt:   #d6ea60;
+    --cream:     #f3efe4;
+    --cream-dk:  #e9e3d0;
+    --white:     #fafaf5;
+    --bark:      #5a4830;
+    --sage:      #6da07c;
+    --sage-lt:   #9dc4aa;
+    --mid-gray:  #888f85;
+    --dark-gray: #363a32;
+    --text:      #1d211a;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+  a { text-decoration: none; color: inherit; }
+  img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+  .ad-banner { background: var(--lime); color: var(--forest-dk); text-align: center; padding: 9px 20px; font-size: 0.71rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
+  .top-bar { background: var(--forest-dk); padding: 9px 64px; display: flex; justify-content: flex-end; align-items: center; gap: 26px; }
+  .top-bar a { font-size: 0.71rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage-lt); transition: color 0.2s; }
+  .top-bar a:hover { color: var(--lime); }
+  .top-sep { color: rgba(255,255,255,0.14); }
+
+  nav { background: var(--forest); padding: 0 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 24px rgba(0,0,0,0.28); }
+  .logo-wrap { display: flex; align-items: center; gap: 13px; padding: 16px 0; }
+  .logo-icon { width: 38px; height: 38px; flex-shrink: 0; }
+  .logo-name { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.2rem; color: var(--white); line-height: 1.1; }
+  .logo-name span { color: var(--lime); display: block; font-family: 'DM Sans', sans-serif; font-size: 0.58rem; letter-spacing: 0.24em; font-weight: 500; text-transform: uppercase; margin-top: 3px; }
+  nav ul { display: flex; list-style: none; }
+  nav ul li a { font-size: 0.79rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.68); padding: 26px 20px; display: block; transition: color 0.2s; position: relative; }
+  nav ul li a::after { content: ''; position: absolute; bottom: 0; left: 20px; right: 20px; height: 2px; background: var(--lime); transform: scaleX(0); transition: transform 0.25s; transform-origin: left; }
+  nav ul li a:hover { color: var(--white); }
+  nav ul li a:hover::after { transform: scaleX(1); }
+  .nav-cta { background: var(--lime) !important; color: var(--forest-dk) !important; font-weight: 600 !important; padding: 26px 28px !important; }
+  .nav-cta::after { display: none !important; }
+  .nav-cta:hover { background: var(--lime-lt) !important; }
+
+  .btn-lime { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 15px 34px; background: var(--lime); color: var(--forest-dk); transition: background 0.2s; display: inline-block; }
+  .btn-lime:hover { background: var(--lime-lt); }
+  .btn-ghost-white { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 15px 34px; border: 1.5px solid rgba(255,255,255,0.5); color: var(--white); transition: all 0.2s; display: inline-block; }
+  .btn-ghost-white:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+  .btn-ghost-lime { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.79rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 13px 30px; border: 1.5px solid var(--lime); color: var(--lime); display: inline-block; transition: all 0.2s; }
+  .btn-ghost-lime:hover { background: var(--lime); color: var(--forest-dk); }
+  .btn-forest { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.79rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 13px 30px; background: var(--forest); color: var(--white); display: inline-block; transition: background 0.2s; }
+  .btn-forest:hover { background: var(--forest-dk); }
+
+  .stag { font-size: 0.69rem; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; margin-bottom: 13px; display: flex; align-items: center; gap: 11px; }
+  .stag::before { content: ''; display: block; width: 26px; height: 1.5px; background: currentColor; flex-shrink: 0; }
+  .stag-lime { color: var(--lime); }
+  .stag-bark { color: var(--bark); }
+
+  /* HERO — Pexels 280222: white house, manicured front lawn, blue sky */
+  .hero { position: relative; height: 92vh; min-height: 600px; overflow: hidden; display: flex; align-items: flex-end; padding-bottom: 90px; }
+  .hero-bg { position: absolute; inset: 0; background-image: url('https://images.pexels.com/photos/280222/pexels-photo-280222.jpeg?auto=compress&cs=tinysrgb&w=1900&h=1200&fit=crop'); background-size: cover; background-position: center 40%; transform: scale(1.03); animation: heroZoom 18s ease-out forwards; }
+  @keyframes heroZoom { from { transform: scale(1.03); } to { transform: scale(1.0); } }
+  .hero-ov { position: absolute; inset: 0; background: linear-gradient(to top, rgba(17,35,24,0.94) 0%, rgba(17,35,24,0.50) 36%, rgba(17,35,24,0.10) 70%, transparent 100%); }
+  .hero-content { position: relative; z-index: 2; padding: 0 80px; max-width: 780px; }
+  .hero-eyebrow { font-size: 0.73rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--lime); margin-bottom: 18px; display: flex; align-items: center; gap: 13px; animation: fadeUp 0.7s ease both; }
+  .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1.5px; background: var(--lime); }
+  .hero-h1 { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(3rem, 5.8vw, 5.6rem); color: var(--white); line-height: 1.05; margin-bottom: 24px; animation: fadeUp 0.7s 0.15s ease both; }
+  .hero-h1 em { font-style: italic; color: var(--lime); }
+  .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.62); line-height: 1.72; margin-bottom: 38px; max-width: 480px; animation: fadeUp 0.7s 0.28s ease both; font-weight: 300; }
+  .hero-btns { display: flex; gap: 14px; animation: fadeUp 0.7s 0.4s ease both; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* WHO — Pexels 4915549: green garden footpath through lush hedges */
+  .who { display: grid; grid-template-columns: 1fr 1fr; min-height: 560px; }
+  .who-text { background: var(--forest); padding: 84px 72px; display: flex; flex-direction: column; justify-content: center; }
+  .who-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 700; color: var(--white); line-height: 1.15; margin-bottom: 22px; }
+  .who-text h2 em { font-style: italic; color: var(--lime); }
+  .who-text p { font-size: 0.98rem; line-height: 1.85; color: rgba(255,255,255,0.62); margin-bottom: 14px; max-width: 450px; }
+  .who-text .btn-ghost-lime { margin-top: 18px; align-self: flex-start; }
+  .who-img { background-image: url('https://images.pexels.com/photos/4915549/pexels-photo-4915549.jpeg?auto=compress&cs=tinysrgb&w=900&h=700&fit=crop'); background-size: cover; background-position: center; min-height: 500px; }
+
+  .services { background: var(--cream); padding: 84px 64px; }
+  .svc-inner { max-width: 1120px; margin: 0 auto; }
+  .services h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 2.5vw, 2.3rem); font-weight: 700; color: var(--forest); margin-bottom: 38px; }
+  .svc-list { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; }
+  .svc-item { background: var(--forest); padding: 36px 26px; position: relative; overflow: hidden; transition: background 0.25s; cursor: pointer; }
+  .svc-item::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--lime); transform: scaleX(0); transition: transform 0.3s; transform-origin: left; }
+  .svc-item:hover { background: var(--forest-dk); }
+  .svc-item:hover::after { transform: scaleX(1); }
+  .svc-num { font-size: 0.62rem; letter-spacing: 0.2em; color: var(--lime); opacity: 0.65; margin-bottom: 13px; }
+  .svc-item h3 { font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--white); line-height: 1.35; }
+  .svc-arrow { color: var(--lime); font-size: 1rem; display: block; margin-top: 20px; transition: transform 0.2s; }
+  .svc-item:hover .svc-arrow { transform: translateX(5px); }
+
+  .proj-sec { background: var(--white); padding: 84px 0 0; }
+  .proj-header { padding: 0 64px 46px; }
+  .proj-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 2.8vw, 2.6rem); font-weight: 700; color: var(--forest); margin-bottom: 10px; }
+  .proj-header p { font-size: 0.98rem; color: var(--mid-gray); max-width: 560px; line-height: 1.75; }
+  .proj-grid { display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: 370px 310px; gap: 4px; }
+  .proj-card { position: relative; overflow: hidden; cursor: pointer; background: var(--forest-md); }
+  .proj-card.big { grid-row: 1 / 3; }
+  .proj-card img { transition: transform 0.55s ease; }
+  .proj-card:hover img { transform: scale(1.06); }
+  .proj-ov { position: absolute; inset: 0; background: linear-gradient(to top, rgba(17,35,24,0.85) 0%, transparent 55%); }
+  .proj-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 26px 30px; z-index: 2; }
+  .proj-info span { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--lime); display: block; margin-bottom: 5px; }
+  .proj-info h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--white); }
+  .proj-card.big .proj-info h3 { font-size: 2rem; }
+  .proj-cta { padding: 28px 64px; text-align: right; border-top: 1px solid var(--cream-dk); }
+
+  .stats { background: var(--forest); padding: 70px 64px; display: grid; grid-template-columns: repeat(3, 1fr); position: relative; overflow: hidden; }
+  .stats::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(197,222,60,0.07) 0%, transparent 65%); }
+  .stat-box { text-align: center; padding: 20px 36px; position: relative; z-index: 1; }
+  .stat-box + .stat-box { border-left: 1px solid rgba(255,255,255,0.08); }
+  .stat-n { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 900; color: var(--lime); line-height: 1; display: block; }
+  .stat-sup { font-size: 0.55em; vertical-align: super; }
+  .stat-t { font-size: 0.88rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); margin-top: 8px; display: block; }
+  .stat-s { font-size: 0.82rem; color: var(--sage-lt); margin-top: 4px; display: block; }
+
+  /* HOW — Pexels 12887876: irrigation sprinkler watering lush green lawn */
+  .how { display: grid; grid-template-columns: 1fr 1fr; min-height: 560px; }
+  .how-img { background-image: url('https://images.pexels.com/photos/12887876/pexels-photo-12887876.jpeg?auto=compress&cs=tinysrgb&w=900&h=700&fit=crop'); background-size: cover; background-position: center; min-height: 500px; }
+  .how-text { background: var(--cream); padding: 84px 72px; display: flex; flex-direction: column; justify-content: center; }
+  .how-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 700; color: var(--forest); line-height: 1.15; margin-bottom: 22px; }
+  .how-text p { font-size: 0.97rem; line-height: 1.85; color: var(--dark-gray); margin-bottom: 13px; }
+
+  /* GALLERY — 4 unique Pexels lawn/garden shots */
+  .gallery { display: grid; grid-template-columns: repeat(4, 1fr); height: 270px; gap: 3px; }
+  .gal-item { overflow: hidden; position: relative; cursor: pointer; }
+  .gal-item img { transition: transform 0.5s; }
+  .gal-item:hover img { transform: scale(1.07); }
+  .gal-ov { position: absolute; inset: 0; background: rgba(17,35,24,0); transition: background 0.3s; display: flex; align-items: center; justify-content: center; }
+  .gal-item:hover .gal-ov { background: rgba(17,35,24,0.54); }
+  .gal-label { font-size: 0.77rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white); opacity: 0; transition: opacity 0.3s; font-weight: 500; }
+  .gal-item:hover .gal-label { opacity: 1; }
+
+  .testimonials { background: var(--white); padding: 84px 64px; }
+  .testi-inner { max-width: 1120px; margin: 0 auto; }
+  .testi-head { margin-bottom: 44px; }
+  .testi-head h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 2.5vw, 2.3rem); font-weight: 700; color: var(--forest); }
+  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .testi-card { background: var(--cream); padding: 40px 34px; border-top: 3px solid transparent; transition: border-color 0.25s; }
+  .testi-card:hover { border-top-color: var(--lime); }
+  .testi-q { font-family: 'Playfair Display', serif; font-size: 4.8rem; color: var(--sage); opacity: 0.22; line-height: 0.6; margin-bottom: 16px; display: block; }
+  .testi-card p { font-size: 0.92rem; line-height: 1.82; color: var(--dark-gray); margin-bottom: 26px; font-style: italic; }
+  .testi-auth { display: flex; align-items: center; gap: 13px; padding-top: 20px; border-top: 1px solid var(--cream-dk); }
+  .testi-av { width: 44px; height: 44px; background: var(--forest); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.84rem; font-weight: 600; color: var(--lime); flex-shrink: 0; }
+  .testi-info strong { display: block; font-size: 0.79rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--forest); }
+  .testi-info span { font-size: 0.77rem; color: var(--mid-gray); }
+  .testi-cta { text-align: center; margin-top: 48px; }
+
+  .cta-band { background: var(--forest-dk); padding: 84px 64px; text-align: center; position: relative; overflow: hidden; }
+  .cta-band::before { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(197,222,60,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(197,222,60,0.03) 1px, transparent 1px); background-size: 54px 54px; }
+  .cta-band h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; color: var(--white); margin-bottom: 12px; position: relative; z-index: 1; }
+  .cta-band h2 em { font-style: italic; color: var(--lime); }
+  .cta-band p { font-size: 1rem; color: rgba(255,255,255,0.5); margin-bottom: 36px; position: relative; z-index: 1; }
+  .cta-band .btn-lime { position: relative; z-index: 1; font-size: 0.88rem; padding: 17px 46px; }
+
+  /* LOCATIONS — Pexels 8414422: aerial green grass field, lush and expansive */
+  .locations { display: grid; grid-template-columns: 1fr 1fr; min-height: 440px; }
+  .loc-map { background-image: url('https://images.pexels.com/photos/8414422/pexels-photo-8414422.jpeg?auto=compress&cs=tinysrgb&w=900&h=600&fit=crop'); background-size: cover; background-position: center; min-height: 400px; }
+  .loc-info { background: var(--cream); padding: 64px 72px; display: flex; flex-direction: column; justify-content: center; gap: 26px; }
+  .loc-info h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--forest); }
+  .loc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .loc-card h3 { font-size: 0.71rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage); margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid var(--cream-dk); }
+  .loc-card p { font-size: 0.85rem; line-height: 1.8; color: var(--dark-gray); }
+  .loc-card a { color: var(--forest); font-weight: 600; transition: color 0.2s; }
+  .loc-card a:hover { color: var(--sage); }
+
+  footer { background: var(--forest-dk); padding: 52px 64px 22px; }
+  .ft-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 38px; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 24px; }
+  .ft-brand p { font-size: 0.85rem; line-height: 1.8; color: rgba(255,255,255,0.35); margin-top: 18px; max-width: 270px; }
+  .ft-col h4 { font-size: 0.67rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--lime); margin-bottom: 16px; font-weight: 600; }
+  .ft-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+  .ft-col ul a { font-size: 0.83rem; color: rgba(255,255,255,0.38); transition: color 0.2s; }
+  .ft-col ul a:hover { color: var(--lime); }
+  .ft-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+  .ft-bottom p { font-size: 0.73rem; color: rgba(255,255,255,0.22); letter-spacing: 0.06em; }
+  .ft-bottom span { color: var(--lime); }
+  .ft-ad { text-align: center; margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.66rem; color: rgba(255,255,255,0.14); letter-spacing: 0.12em; }
+
+  @media (max-width: 1024px) {
+    .top-bar, nav, .services, .testimonials, .cta-band, footer { padding-left: 24px; padding-right: 24px; }
+    .hero-content, .proj-header, .proj-cta { padding-left: 24px; padding-right: 24px; }
+    .who, .how, .locations { grid-template-columns: 1fr; }
+    .who-img { order: -1; min-height: 280px; }
+    .how-img { min-height: 280px; }
+    .who-text, .how-text { padding: 50px 24px; }
+    .loc-info { padding: 44px 24px; }
+    .svc-list { grid-template-columns: 1fr 1fr; }
+    .proj-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+    .proj-card { height: 280px; }
+    .proj-card.big { grid-row: auto; height: 340px; }
+    .stats { grid-template-columns: 1fr; padding: 52px 24px; }
+    .stat-box + .stat-box { border-left: none; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 28px; }
+    .gallery { grid-template-columns: 1fr 1fr; height: auto; }
+    .gal-item { height: 185px; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .loc-map { min-height: 250px; }
+    .loc-grid { grid-template-columns: 1fr; }
+    .ft-top { grid-template-columns: 1fr 1fr; }
+    nav ul li a { padding: 22px 12px; font-size: 0.74rem; }
+    .hero { padding-bottom: 60px; }
+    .hero-content { padding: 0 24px; }
+  }
+
+/* ANGEL SITE STUDIO — RETURN BUTTON */
+.ass-return-btn {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 9999;
+  background: #3B82F6;
+  color: #fff;
+  font-family: system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s, transform 0.2s;
+}
+.ass-return-btn:hover {
+  background: #2563EB;
+  transform: translateY(-1px);
+}
+
+/* ANGEL SITE STUDIO — CONTACT POPUP */
+.ass-popup-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+}
+.ass-popup-overlay.active { display: flex; }
+.ass-popup {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2.5rem 2rem 2rem;
+  max-width: 480px;
+  width: 92%;
+  position: relative;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.3);
+  animation: assSlideUp 0.3s ease-out;
+}
+@keyframes assSlideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.ass-popup-close {
+  position: absolute;
+  top: 12px; right: 14px;
+  background: none; border: none;
+  font-size: 1.5rem; cursor: pointer;
+  color: #666; line-height: 1;
+}
+.ass-popup-close:hover { color: #111; }
+.ass-popup h2 {
+  font-family: system-ui, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 0.25rem;
+  text-align: center;
+}
+.ass-popup .ass-sub {
+  text-align: center;
+  color: #666;
+  font-size: 0.88rem;
+  margin-bottom: 1.25rem;
+}
+.ass-popup form { display: flex; flex-direction: column; gap: 0.75rem; }
+.ass-popup label { font-size: 0.82rem; font-weight: 600; color: #333; }
+.ass-popup input,
+.ass-popup textarea {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+.ass-popup input:focus,
+.ass-popup textarea:focus {
+  outline: none;
+  border-color: #3B82F6;
+}
+.ass-popup textarea { resize: vertical; min-height: 80px; }
+.ass-popup-submit {
+  background: #3B82F6;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.ass-popup-submit:hover { background: #2563EB; }
+</style>
+</head>
+<body>
+<a class="ass-return-btn" href="../index.html">&#8592; Angel Site Studio</a>
+
+<div class="ad-banner">⚠ For Advertisement &amp; Demonstration Purposes Only — Sample Website</div>
+
+<div class="top-bar">
+  <a href="tel:5555550200">(555) 555-0200</a>
+  <span class="top-sep">|</span>
+  <a href="mailto:hello@examplelandscaping.com">hello@examplelandscaping.com</a>
+  <span class="top-sep">|</span>
+  <a href="#contact" style="color:var(--lime)">Free Estimate →</a>
+</div>
+
+<nav>
+  <a href="#" class="logo-wrap">
+    <div class="logo-icon">
+      <svg viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 3 C19 3, 35 10, 35 23 C35 31, 27 37, 19 37 C11 37, 3 31, 3 23 C3 10, 19 3Z" fill="#c5de3c"/>
+        <path d="M19 37 L19 17" stroke="#112318" stroke-width="2" stroke-linecap="round"/>
+        <path d="M19 25 C19 25, 11 19, 7 13" stroke="#112318" stroke-width="1.5" stroke-linecap="round" opacity="0.55"/>
+        <path d="M19 21 C19 21, 27 17, 31 12" stroke="#112318" stroke-width="1.5" stroke-linecap="round" opacity="0.55"/>
+      </svg>
+    </div>
+    <div class="logo-name">Example Landscaping Co.<span>We Grow Beautiful™</span></div>
+  </a>
+  <ul>
+    <li><a href="#">▸ Home</a></li>
+    <li><a href="#about">Company</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Portfolio</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-ov"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Trusted Landscaping Company · Est. 2005</p>
+    <h1 class="hero-h1">Your Yard.<br><em>Perfected.</em></h1>
+    <p class="hero-sub">Professional landscaping for homes and businesses in your area.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-lime">See Our Work</a>
+      <a href="#contact" class="btn-ghost-white">Get a Free Quote</a>
+    </div>
+  </div>
+</section>
+
+<section class="who" id="about">
+  <div class="who-text">
+    <p class="stag stag-lime">Who We Are</p>
+    <h2>We Don't Just Mow Lawns.<br><em>We Create Landscapes.</em></h2>
+    <p>At Example Landscaping Co., our commitment is simple — make every property we touch look its absolute best. We provide full support from design consultation through installation and ongoing seasonal care.</p>
+    <p>Integrity, reliability, and craftsmanship in every job. Whether a residential garden or a commercial campus, we build lasting relationships one yard at a time.</p>
+    <a href="#about" class="btn-ghost-lime">Learn More</a>
+  </div>
+  <div class="who-img"></div>
+</section>
+
+<section class="services" id="services">
+  <div class="svc-inner">
+    <p class="stag stag-bark">What We Do</p>
+    <h2>Our Services Include:</h2>
+    <div class="svc-list">
+      <div class="svc-item"><div class="svc-num">01</div><h3>Landscape Design</h3><span class="svc-arrow">→</span></div>
+      <div class="svc-item"><div class="svc-num">02</div><h3>Lawn Care &amp; Maintenance</h3><span class="svc-arrow">→</span></div>
+      <div class="svc-item"><div class="svc-num">03</div><h3>Hardscaping &amp; Patios</h3><span class="svc-arrow">→</span></div>
+      <div class="svc-item"><div class="svc-num">04</div><h3>Irrigation Systems</h3><span class="svc-arrow">→</span></div>
+      <div class="svc-item"><div class="svc-num">05</div><h3>Seasonal Planting</h3><span class="svc-arrow">→</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="proj-sec" id="projects">
+  <div class="proj-header">
+    <p class="stag stag-bark">Our Portfolio</p>
+    <h2>Some of Our Projects</h2>
+    <p>From intimate residential gardens to expansive commercial grounds, every project gets the same care and craftsmanship.</p>
+  </div>
+  <div class="proj-grid">
+    <!-- BIG: Pexels 10831661 — stone pathway winding through lush flowering garden -->
+    <div class="proj-card big">
+      <img src="https://images.pexels.com/photos/10831661/pexels-photo-10831661.jpeg?auto=compress&cs=tinysrgb&w=1000&h=1400&fit=crop" alt="Riverwood Estate Garden">
+      <div class="proj-ov"></div>
+      <div class="proj-info">
+        <span>Residential Design · 2024</span>
+        <h3>Riverwood Estate Garden</h3>
+      </div>
+    </div>
+    <!-- TOP RIGHT: Pexels 226407 — house surrounded by green lawn and gardens -->
+    <div class="proj-card">
+      <img src="https://images.pexels.com/photos/226407/pexels-photo-226407.jpeg?auto=compress&cs=tinysrgb&w=700&h=500&fit=crop" alt="Meadowbrook Lawn">
+      <div class="proj-ov"></div>
+      <div class="proj-info">
+        <span>Lawn Renovation · 2024</span>
+        <h3>Meadowbrook Lawn</h3>
+      </div>
+    </div>
+    <!-- BOTTOM RIGHT: Pexels 7174111 — garden gazebo path with lush plants and trees -->
+    <div class="proj-card">
+      <img src="https://images.pexels.com/photos/7174111/pexels-photo-7174111.jpeg?auto=compress&cs=tinysrgb&w=700&h=500&fit=crop" alt="Hillcrest Garden Retreat">
+      <div class="proj-ov"></div>
+      <div class="proj-info">
+        <span>Garden Design · 2023</span>
+        <h3>Hillcrest Garden Retreat</h3>
+      </div>
+    </div>
+  </div>
+  <div class="proj-cta">
+    <a href="#" class="btn-forest">View Full Portfolio →</a>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stat-box">
+    <span class="stat-n">18<span class="stat-sup">+</span></span>
+    <span class="stat-t">Years</span>
+    <span class="stat-s">Founded 2005</span>
+  </div>
+  <div class="stat-box">
+    <span class="stat-n">800<span class="stat-sup">+</span></span>
+    <span class="stat-t">Properties</span>
+    <span class="stat-s">Transformed Across the Region</span>
+  </div>
+  <div class="stat-box">
+    <span class="stat-n">1,200<span class="stat-sup">+</span></span>
+    <span class="stat-t">Happy Clients</span>
+    <span class="stat-s">Grown with every season</span>
+  </div>
+</section>
+
+<section class="how">
+  <div class="how-img"></div>
+  <div class="how-text">
+    <p class="stag stag-bark">Our Process</p>
+    <h2>How We Work</h2>
+    <p>No two properties are alike — and we never treat them that way. We start with a thorough consultation to understand your space, your goals, and your budget.</p>
+    <p>From there we design, install, and maintain with care that shows in every detail — clean edges, healthy plants, zero shortcuts. You'll always know exactly what we're doing and why.</p>
+    <p>Whether it's a single-day cleanup or a full seasonal transformation, we show up on time and leave your property looking better than we found it.</p>
+    <a href="#services" class="btn-forest" style="margin-top:20px;">Our Services →</a>
+  </div>
+</section>
+
+<!-- Gallery: 4 unique Pexels lawn/garden photos, strictly no food -->
+<div class="gallery">
+  <!-- Pexels 570041 — colorful wildflower garden beds in bloom -->
+  <div class="gal-item">
+    <img src="https://images.pexels.com/photos/570041/pexels-photo-570041.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Garden Beds">
+    <div class="gal-ov"><span class="gal-label">Gardens</span></div>
+  </div>
+  <!-- Pexels 189796 — clean manicured green grass lawn field -->
+  <div class="gal-item">
+    <img src="https://images.pexels.com/photos/189796/pexels-photo-189796.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Lawn Care">
+    <div class="gal-ov"><span class="gal-label">Lawn Care</span></div>
+  </div>
+  <!-- Pexels 34581778 — topiary trees lining a green garden pathway -->
+  <div class="gal-item">
+    <img src="https://images.pexels.com/photos/34581778/pexels-photo-34581778.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Garden Design">
+    <div class="gal-ov"><span class="gal-label">Design</span></div>
+  </div>
+  <!-- Pexels 8894802 — front yard of house with trees and lush green lawn -->
+  <div class="gal-item">
+    <img src="https://images.pexels.com/photos/8894802/pexels-photo-8894802.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Front Yards">
+    <div class="gal-ov"><span class="gal-label">Front Yards</span></div>
+  </div>
+</div>
+
+<section class="testimonials">
+  <div class="testi-inner">
+    <div class="testi-head">
+      <p class="stag stag-bark">Client Stories</p>
+      <h2>What Our Clients Say</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <span class="testi-q">"</span>
+        <p>Example Landscaping Co. completely transformed our front yard into something out of a magazine. They actually listened to what we wanted and delivered beyond our expectations. Our neighbors can't stop asking who did the work.</p>
+        <div class="testi-auth">
+          <div class="testi-av">TR</div>
+          <div class="testi-info"><strong>The Reynolds Family</strong><span>Residential Design</span></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <span class="testi-q">"</span>
+        <p>We've used three other landscaping companies over the years. Example Landscaping is the only one that shows up on time, every single time, and leaves the property cleaner than they found it. Absolute professionals.</p>
+        <div class="testi-auth">
+          <div class="testi-av">MC</div>
+          <div class="testi-info"><strong>Maple Creek HOA</strong><span>Commercial Maintenance</span></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <span class="testi-q">"</span>
+        <p>From the irrigation system to the garden redesign — every detail was handled perfectly. They finished two days early and the crew was respectful and communicative throughout the entire project.</p>
+        <div class="testi-auth">
+          <div class="testi-av">JW</div>
+          <div class="testi-info"><strong>James &amp; Dana Whitfield</strong><span>Full Redesign</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-cta">
+      <a href="#contact" class="btn-forest">Read More Reviews →</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <h2>Ready to <em>Transform</em><br>Your Outdoor Space?</h2>
+  <p>Free estimates on all new projects — no pressure, no obligation.</p>
+  <a href="mailto:hello@examplelandscaping.com" class="btn-lime">Get a Free Estimate</a>
+</section>
+
+<section class="locations">
+  <div class="loc-map"></div>
+  <div class="loc-info">
+    <div>
+      <p class="stag stag-bark">Find Us</p>
+      <h2>Our Service Areas</h2>
+    </div>
+    <div class="loc-grid">
+      <div class="loc-card">
+        <h3>Main Office</h3>
+        <p>123 Main Street<br><br>
+        <a href="tel:5555550200">(555) 555-0200</a><br>
+        <a href="mailto:hello@examplelandscaping.com">hello@examplelandscaping.com</a></p>
+      </div>
+      <div class="loc-card">
+        <h3>North Region</h3>
+        <p>Serving the northern communities and surrounding areas<br><br>
+        <a href="tel:5555550201">(555) 555-0201</a><br>
+        <a href="mailto:hello@examplelandscaping.com">hello@examplelandscaping.com</a></p>
+      </div>
+      <div class="loc-card">
+        <h3>South Region</h3>
+        <p>Serving the southern communities and surrounding areas<br><br>
+        <a href="mailto:hello@examplelandscaping.com">hello@examplelandscaping.com</a></p>
+      </div>
+      <div class="loc-card">
+        <h3>East Region</h3>
+        <p>Serving the eastern communities and surrounding areas<br><br>
+        <a href="mailto:hello@examplelandscaping.com">hello@examplelandscaping.com</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-top">
+    <div class="ft-brand">
+      <a href="#" class="logo-wrap" style="padding:0;">
+        <div class="logo-icon">
+          <svg viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 3 C19 3, 35 10, 35 23 C35 31, 27 37, 19 37 C11 37, 3 31, 3 23 C3 10, 19 3Z" fill="#c5de3c"/>
+            <path d="M19 37 L19 17" stroke="#112318" stroke-width="2" stroke-linecap="round"/>
+            <path d="M19 25 C19 25, 11 19, 7 13" stroke="#112318" stroke-width="1.5" stroke-linecap="round" opacity="0.55"/>
+            <path d="M19 21 C19 21, 27 17, 31 12" stroke="#112318" stroke-width="1.5" stroke-linecap="round" opacity="0.55"/>
+          </svg>
+        </div>
+        <div class="logo-name">Example Landscaping Co.<span>We Grow Beautiful™</span></div>
+      </a>
+      <p>Transforming outdoor spaces for over 18 years. Licensed, insured, and proud of every property we touch.</p>
+    </div>
+    <div class="ft-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Team</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Preferred Vendors</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Landscape Design</a></li>
+        <li><a href="#">Lawn Maintenance</a></li>
+        <li><a href="#">Hardscaping</a></li>
+        <li><a href="#">Irrigation</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms &amp; Conditions</a></li>
+        <li><a href="#">License Info</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <p>© 2025 Example Landscaping Co. — All rights reserved.</p>
+    <p>Licensed &amp; Fully Insured</p>
+  </div>
+  <div class="ft-ad">For Advertisement &amp; Demonstration Purposes Only · All Photos via Pexels (Free Commercial License) · Not a Real Business Listing</div>
+</footer>
+
+<!-- ANGEL SITE STUDIO — CONTACT POPUP -->
+<div class="ass-popup-overlay" id="assPopup">
+  <div class="ass-popup">
+    <button class="ass-popup-close" id="assPopupClose" aria-label="Close">&times;</button>
+    <h2>Want a website like this?</h2>
+    <p class="ass-sub">Get a free quote from Angel Site Studio!</p>
+    <form id="assPopupForm">
+      <div>
+        <label for="ass-name">Name</label>
+        <input id="ass-name" type="text" name="name" placeholder="John Smith" required>
+      </div>
+      <div>
+        <label for="ass-email">Email</label>
+        <input id="ass-email" type="email" name="email" placeholder="john@example.com" required>
+      </div>
+      <div>
+        <label for="ass-phone">Phone</label>
+        <input id="ass-phone" type="tel" name="phone" placeholder="(415) 555-0100">
+      </div>
+      <div>
+        <label for="ass-msg">Message</label>
+        <textarea id="ass-msg" name="message" placeholder="Tell us about your business..."></textarea>
+      </div>
+      <button class="ass-popup-submit" type="submit">Get My Free Quote &rarr;</button>
+    </form>
+  </div>
+</div>
+
+<script>
+(function(){
+  var overlay = document.getElementById('assPopup');
+  var closeBtn = document.getElementById('assPopupClose');
+
+  function openPopup(e) {
+    if (e) e.preventDefault();
+    overlay.classList.add('active');
+  }
+  function closePopup() {
+    overlay.classList.remove('active');
+  }
+
+  closeBtn.addEventListener('click', closePopup);
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closePopup();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closePopup();
+  });
+
+  // Intercept ALL internal links except the return button
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a');
+    if (!link) return;
+    if (link.classList.contains('ass-return-btn')) return;
+    if (link.hostname && link.hostname !== location.hostname) return;
+    e.preventDefault();
+    overlay.classList.add('active');
+  });
+
+  // Intercept example site form submits (not our popup form)
+  document.querySelectorAll('form').forEach(function(form) {
+    if (form.id === 'assPopupForm') return;
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      overlay.classList.add('active');
+    });
+  });
+
+  // Handle our popup form submit
+  document.getElementById('assPopupForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var form = e.target;
+    var data = new FormData(form);
+    var btn = form.querySelector('.ass-popup-submit');
+    var orig = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    // Send to Angel Site Studio contact
+    fetch('https://formspree.io/f/xnnqeqpz', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(function(r) {
+      if (r.ok) {
+        form.reset();
+        btn.textContent = 'Sent! We will be in touch.';
+        setTimeout(function() { closePopup(); btn.disabled = false; btn.textContent = orig; }, 2500);
+      } else {
+        btn.disabled = false;
+        btn.textContent = orig;
+        alert('Something went wrong. Please try again or text us at (415) 660-0339.');
+      }
+    }).catch(function() {
+      btn.disabled = false;
+      btn.textContent = orig;
+      alert('Network error. Please try again or text us at (415) 660-0339.');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
