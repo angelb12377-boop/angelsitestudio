@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>About | Angel Site Studio</title>
     <meta name="description" content="Angel Site Studio builds premium websites for local service businesses. Learn our mission and who we serve." />
     <link rel="stylesheet" href="css/styles.css" />
@@ -12,25 +14,39 @@
     <header class="site-header" role="banner">
       <div class="container header-inner">
         <a class="logo" href="index.html" aria-label="Angel Site Studio Home">
-          <span class="logo-icon" aria-hidden="true"><svg viewBox="0 0 32 32" aria-hidden="true"><ellipse cx="16" cy="9" rx="10" ry="3.5" stroke-width="2.2"/><circle cx="6" cy="9" r="1.2"/><circle cx="26" cy="9" r="1.2"/><path d="M11 25 L16 13 L21 25 M12.8 21.5 H19.2"/></svg></span>
+          <span class="logo-icon" aria-hidden="true">
+            <svg viewBox="0 0 36 36" fill="none" aria-hidden="true">
+              <path d="M9 14 A10 5.5 0 1 1 27 14" stroke="url(#haloGradAb)" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+              <circle cx="9" cy="14" r="1.4" fill="url(#haloGradAb)"/>
+              <circle cx="27" cy="14" r="1.4" fill="url(#haloGradAb)"/>
+              <path class="a-path" d="M13 30 L18 17 L23 30 M14.8 26 H21.2" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <defs>
+                <linearGradient id="haloGradAb" x1="9" y1="14" x2="27" y2="14" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#fcd34d"/>
+                  <stop offset="50%" stop-color="#f59e0b"/>
+                  <stop offset="100%" stop-color="#d97706"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </span>
           Angel Site Studio
         </a>
         <div class="lang-toggle" role="group" aria-label="Language selection">
-          <button class="lang-opt active" data-lang="en">EN</button>
-          <button class="lang-opt" data-lang="es">ES</button>
+          <button class="lang-opt active" data-lang="en" aria-pressed="true">EN</button>
+          <button class="lang-opt" data-lang="es" aria-pressed="false">ES</button>
         </div>
         <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="main-nav">
           <span></span><span></span><span></span>
         </button>
         <nav class="nav" id="main-nav" role="navigation">
-          <a href="services.html"  data-i18n="nav_services">Services</a>
           <a href="portfolio.html" data-i18n="nav_portfolio">Portfolio</a>
-          <a href="index.html#process" data-i18n="nav_process">Process</a>
-          <a href="pricing.html"   data-i18n="nav_pricing">Pricing</a>
-          <a href="contact.html"   data-i18n="nav_contact">Contact</a>
-          <a class="btn-call" href="tel:+14156600339" data-i18n="nav_call">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.7A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14v2.92z"/></svg>
-            Call (415) 660-0339
+          <a href="pricing.html" data-i18n="nav_pricing">Pricing</a>
+          <a href="about.html" data-i18n="nav_about" aria-current="page">About</a>
+          <a href="contact.html" data-i18n="nav_contact">Contact</a>
+
+          <a class="btn-call" href="sms:+14156600339" data-i18n="nav_call">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            Text (415) 660-0339
           </a>
         </nav>
       </div>
@@ -38,47 +54,165 @@
 
     <main>
 
-      <section class="page-hero">
+      <!-- ════════════════════════════════════════════
+           1. HERO — Bold opening statement
+           ════════════════════════════════════════════ -->
+      <section class="about-hero">
         <div class="container">
-          <span class="eyebrow" data-i18n="about_eyebrow">About Angel Site Studio</span>
-          <h1 data-i18n="about_h1">We help service businesses look and grow online</h1>
-          <p class="lead" data-i18n="about_lead">Angel Site Studio was built for one reason: local service businesses deserve websites that actually work for them.</p>
-        </div>
-      </section>
-
-      <section class="section-sm">
-        <div class="container grid-2">
-          <div class="card">
-            <div class="svc-icon">🎯</div>
-            <h3 data-i18n="about_mission_h">Our Mission</h3>
-            <p data-i18n="about_mission_p">To give every local service business a professional online presence that builds trust, captures leads, and grows with them.</p>
-          </div>
-          <div class="card">
-            <div class="svc-icon">🤝</div>
-            <h3 data-i18n="about_serve_h">Who We Serve</h3>
-            <p data-i18n="about_serve_p">Contractors, landscapers, HVAC companies, plumbers, cleaners, barbers, and any trade or service business that depends on local reputation.</p>
-          </div>
-          <div class="card">
-            <div class="svc-icon">⭐</div>
-            <h3 data-i18n="about_diff_h">What Makes Us Different</h3>
-            <p data-i18n="about_diff_p">We don't build generic websites. Every site is tailored to your industry, your market, and your goals—and we support you after launch.</p>
-          </div>
-          <div class="card">
-            <div class="svc-icon">🌐</div>
-            <h3 data-i18n="about_bilingual_h">Bilingual by Default</h3>
-            <p data-i18n="about_bilingual_p">We build websites in both English and Spanish so you can reach every customer in your market.</p>
+          <div class="about-hero-inner reveal">
+            <span class="eyebrow">About Angel Site Studio</span>
+            <h1>Real Business Experience.<br><em>Real Websites.</em></h1>
+            <p class="about-hero-sub">I don't come from tech. I come from the field — construction, real estate, operations. I built this studio because I lived the problem I'm solving.</p>
           </div>
         </div>
       </section>
 
-      <section class="section-sm">
+
+      <!-- ════════════════════════════════════════════
+           2. MY STORY — Personal, first-person
+           ════════════════════════════════════════════ -->
+      <section class="about-story">
         <div class="container">
-          <div class="cta-band">
-            <h2 data-i18n="about_cta_h">Ready to build your professional website?</h2>
-            <p data-i18n="cta_p">Let's build a modern website that makes your business look trusted and drives better leads.</p>
-            <div class="hero-cta">
-              <a class="btn btn-primary btn-lg" href="contact.html" data-i18n="cta_btn1">Get a Free Quote</a>
-              <a class="btn btn-ghost btn-lg" href="portfolio.html" data-i18n="port_view">View Full Portfolio</a>
+          <div class="story-content reveal">
+            <h2>My Story</h2>
+            <div class="story-divider"></div>
+            <p>For years, I ran businesses in construction, real estate, and operations. We did great work. But whenever a client or partner asked <strong>"do you have a website?"</strong> — I hesitated. We didn't have a strong online presence, and it showed.</p>
+            <p>I watched competitors with half our skill level land better clients because they looked more professional online. Not better work. Just better branding. That bothered me.</p>
+            <p>So I taught myself web design. I built something clean and professional for my own business, and something clicked. I fell in love with the craft — the process of turning a business into a brand that people trust before they even make a call.</p>
+            <p>Now I do this for other small and service businesses. Contractors, cleaners, landscapers, restaurant owners — people who do real work and deserve a website that reflects it. No templates. No fluff. Just sharp, honest design that gets results.</p>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- City skyline divider -->
+      <div class="city-divider" aria-hidden="true">
+        <svg viewBox="0 0 1200 80" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="50" y="30" width="40" height="50" rx="2" fill="var(--text)" opacity="0.04"/>
+          <rect x="95" y="15" width="30" height="65" rx="2" fill="var(--text)" opacity="0.05"/>
+          <rect x="130" y="25" width="45" height="55" rx="2" fill="var(--text)" opacity="0.035"/>
+          <rect x="200" y="40" width="35" height="40" rx="2" fill="var(--text)" opacity="0.04"/>
+          <rect x="240" y="20" width="25" height="60" rx="2" fill="var(--text)" opacity="0.05"/>
+          <rect x="310" y="35" width="50" height="45" rx="2" fill="var(--cta)" opacity="0.04"/>
+          <rect x="370" y="10" width="35" height="70" rx="2" fill="var(--text)" opacity="0.06"/>
+          <rect x="410" y="28" width="40" height="52" rx="2" fill="var(--text)" opacity="0.035"/>
+          <rect x="480" y="38" width="30" height="42" rx="2" fill="var(--cta)" opacity="0.04"/>
+          <rect x="520" y="18" width="50" height="62" rx="2" fill="var(--text)" opacity="0.05"/>
+          <rect x="580" y="32" width="35" height="48" rx="2" fill="var(--text)" opacity="0.04"/>
+          <rect x="640" y="8" width="30" height="72" rx="2" fill="var(--cta)" opacity="0.05"/>
+          <rect x="680" y="25" width="45" height="55" rx="2" fill="var(--text)" opacity="0.04"/>
+          <rect x="750" y="40" width="35" height="40" rx="2" fill="var(--text)" opacity="0.035"/>
+          <rect x="800" y="15" width="40" height="65" rx="2" fill="var(--text)" opacity="0.05"/>
+          <rect x="850" y="30" width="30" height="50" rx="2" fill="var(--cta)" opacity="0.04"/>
+          <rect x="900" y="22" width="50" height="58" rx="2" fill="var(--text)" opacity="0.04"/>
+          <rect x="960" y="35" width="35" height="45" rx="2" fill="var(--text)" opacity="0.05"/>
+          <rect x="1010" y="12" width="40" height="68" rx="2" fill="var(--cta)" opacity="0.05"/>
+          <rect x="1060" y="28" width="30" height="52" rx="2" fill="var(--text)" opacity="0.04"/>
+          <rect x="1100" y="42" width="50" height="38" rx="2" fill="var(--text)" opacity="0.035"/>
+          <line x1="0" y1="79" x2="1200" y2="79" stroke="var(--text)" stroke-width="1" opacity="0.06"/>
+        </svg>
+      </div>
+
+      <!-- ════════════════════════════════════════════
+           3. VALUES — Three clean cards
+           ════════════════════════════════════════════ -->
+      <section class="about-values">
+        <div class="container">
+          <div class="values-grid">
+
+            <div class="value-card reveal">
+              <div class="value-visual">
+                <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Clean Work: browser window with clean grid layout -->
+                  <rect x="20" y="10" width="160" height="100" rx="8" stroke="var(--cta)" stroke-width="1.5" fill="none" opacity="0.2"/>
+                  <rect x="20" y="10" width="160" height="18" rx="8" fill="var(--cta)" opacity="0.08"/>
+                  <circle cx="32" cy="19" r="3" fill="#ff5f57" opacity="0.6"/>
+                  <circle cx="42" cy="19" r="3" fill="#ffbd2e" opacity="0.6"/>
+                  <circle cx="52" cy="19" r="3" fill="#28ca42" opacity="0.6"/>
+                  <!-- Clean grid blocks -->
+                  <rect x="30" y="38" width="50" height="6" rx="2" fill="var(--text)" opacity="0.12"/>
+                  <rect x="30" y="50" width="140" height="4" rx="2" fill="var(--text)" opacity="0.06"/>
+                  <rect x="30" y="60" width="140" height="4" rx="2" fill="var(--text)" opacity="0.06"/>
+                  <rect x="30" y="74" width="42" height="28" rx="4" fill="var(--cta)" opacity="0.1"/>
+                  <rect x="78" y="74" width="42" height="28" rx="4" fill="var(--cta)" opacity="0.07"/>
+                  <rect x="126" y="74" width="42" height="28" rx="4" fill="var(--cta)" opacity="0.05"/>
+                  <!-- Speed line -->
+                  <line x1="30" y1="108" x2="90" y2="108" stroke="var(--cta)" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+                </svg>
+              </div>
+              <h3>Clean Work</h3>
+              <p>Every site is sharp, fast, and mobile-ready. No clutter, no gimmicks — just clean design that works on every screen and makes your business look the part.</p>
+            </div>
+
+            <div class="value-card reveal">
+              <div class="value-visual">
+                <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Built for Trust: shield with checkmark + buildings -->
+                  <!-- City skyline -->
+                  <rect x="15" y="70" width="18" height="40" rx="2" fill="var(--text)" opacity="0.05"/>
+                  <rect x="37" y="55" width="14" height="55" rx="2" fill="var(--text)" opacity="0.06"/>
+                  <rect x="55" y="65" width="20" height="45" rx="2" fill="var(--text)" opacity="0.04"/>
+                  <rect x="125" y="60" width="16" height="50" rx="2" fill="var(--text)" opacity="0.05"/>
+                  <rect x="145" y="50" width="20" height="60" rx="2" fill="var(--text)" opacity="0.06"/>
+                  <rect x="169" y="68" width="16" height="42" rx="2" fill="var(--text)" opacity="0.04"/>
+                  <!-- Shield -->
+                  <path d="M100 18 L130 30 L130 62 Q130 82 100 95 Q70 82 70 62 L70 30 Z" stroke="var(--cta)" stroke-width="1.5" fill="var(--cta)" fill-opacity="0.06"/>
+                  <!-- Checkmark -->
+                  <polyline points="87,55 96,65 115,44" stroke="var(--cta)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.5"/>
+                  <!-- Ground line -->
+                  <line x1="10" y1="110" x2="190" y2="110" stroke="var(--text)" stroke-width="1" opacity="0.06"/>
+                </svg>
+              </div>
+              <h3>Built for Trust</h3>
+              <p>Your website is often the first impression. I build sites that make people feel confident hiring you before they ever pick up the phone.</p>
+            </div>
+
+            <div class="value-card reveal">
+              <div class="value-visual">
+                <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Real Experience: tools + buildings + chart -->
+                  <!-- Building outlines -->
+                  <rect x="10" y="50" width="24" height="60" rx="2" fill="none" stroke="var(--text)" stroke-width="1" opacity="0.08"/>
+                  <rect x="12" y="55" width="4" height="4" rx="0.5" fill="var(--cta)" opacity="0.15"/>
+                  <rect x="18" y="55" width="4" height="4" rx="0.5" fill="var(--cta)" opacity="0.15"/>
+                  <rect x="24" y="55" width="4" height="4" rx="0.5" fill="var(--cta)" opacity="0.15"/>
+                  <rect x="12" y="63" width="4" height="4" rx="0.5" fill="var(--cta)" opacity="0.1"/>
+                  <rect x="18" y="63" width="4" height="4" rx="0.5" fill="var(--cta)" opacity="0.1"/>
+                  <rect x="24" y="63" width="4" height="4" rx="0.5" fill="var(--cta)" opacity="0.1"/>
+                  <rect x="40" y="35" width="20" height="75" rx="2" fill="none" stroke="var(--text)" stroke-width="1" opacity="0.08"/>
+                  <!-- Growth chart -->
+                  <rect x="80" y="80" width="16" height="28" rx="2" fill="var(--cta)" opacity="0.1"/>
+                  <rect x="100" y="65" width="16" height="43" rx="2" fill="var(--cta)" opacity="0.15"/>
+                  <rect x="120" y="50" width="16" height="58" rx="2" fill="var(--cta)" opacity="0.2"/>
+                  <rect x="140" y="35" width="16" height="73" rx="2" fill="var(--cta)" opacity="0.25"/>
+                  <rect x="160" y="20" width="16" height="88" rx="2" fill="var(--cta)" opacity="0.3"/>
+                  <!-- Trend line -->
+                  <polyline points="88,78 108,62 128,47 148,32 168,18" stroke="var(--cta)" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.4"/>
+                  <!-- Ground line -->
+                  <line x1="10" y1="110" x2="190" y2="110" stroke="var(--text)" stroke-width="1" opacity="0.06"/>
+                </svg>
+              </div>
+              <h3>Real Experience</h3>
+              <p>I've run the businesses. I've signed the contracts. I've dealt with the clients. This isn't theoretical — I build from experience, not a textbook.</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ════════════════════════════════════════════
+           4. WHY I DO THIS — Warm, human closing
+           ════════════════════════════════════════════ -->
+      <section class="about-closing">
+        <div class="container">
+          <div class="closing-content reveal">
+            <h2>Why I Do This</h2>
+            <p>It's not just about building websites. It's about that moment when a business owner pulls up their new site on their phone, shows it to a friend, and says <strong>"this is us."</strong></p>
+            <p>I want every client to feel proud when someone asks <em>"do you have a website?"</em> — and to know the answer is hell yes.</p>
+            <div class="closing-cta">
+              <a class="btn btn-primary btn-lg" href="contact.html">Let's Build Yours</a>
+              <a class="btn btn-ghost btn-lg" href="portfolio.html">See the Work</a>
             </div>
           </div>
         </div>
@@ -91,17 +225,30 @@
         <div class="footer-grid">
           <div class="footer-brand">
             <a class="logo" href="index.html" aria-label="Angel Site Studio Home">
-              <span class="logo-icon" aria-hidden="true"><svg viewBox="0 0 32 32" aria-hidden="true"><ellipse cx="16" cy="9" rx="10" ry="3.5" stroke-width="2.2"/><circle cx="6" cy="9" r="1.2"/><circle cx="26" cy="9" r="1.2"/><path d="M11 25 L16 13 L21 25 M12.8 21.5 H19.2"/></svg></span>
+              <span class="logo-icon" aria-hidden="true">
+                <svg viewBox="0 0 36 36" fill="none" aria-hidden="true">
+                  <path d="M9 14 A10 5.5 0 1 1 27 14" stroke="url(#haloGradAbF)" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+                  <circle cx="9" cy="14" r="1.4" fill="url(#haloGradAbF)"/>
+                  <circle cx="27" cy="14" r="1.4" fill="url(#haloGradAbF)"/>
+                  <path class="a-path" d="M13 30 L18 17 L23 30 M14.8 26 H21.2" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                  <defs>
+                    <linearGradient id="haloGradAbF" x1="9" y1="14" x2="27" y2="14" gradientUnits="userSpaceOnUse">
+                      <stop offset="0%" stop-color="#fcd34d"/>
+                      <stop offset="50%" stop-color="#f59e0b"/>
+                      <stop offset="100%" stop-color="#d97706"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </span>
               Angel Site Studio
             </a>
-            <p data-i18n="footer_tagline">Modern websites for service businesses that want more customers.</p>
+            <p data-i18n="footer_tagline">Designed to Get You Booked.</p>
           </div>
           <nav class="footer-col" aria-label="Site pages">
             <h4 data-i18n="footer_pages">Pages</h4>
-            <a href="services.html"  data-i18n="nav_services">Services</a>
             <a href="portfolio.html" data-i18n="nav_portfolio">Portfolio</a>
-            <a href="index.html#process" data-i18n="nav_process">Process</a>
             <a href="pricing.html"   data-i18n="nav_pricing">Pricing</a>
+            <a href="about.html"     data-i18n="nav_about">About</a>
             <a href="contact.html"   data-i18n="nav_contact">Contact</a>
           </nav>
           <div class="footer-col">
@@ -111,15 +258,15 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <span data-i18n="footer_copy">© 2025 Angel Site Studio. All rights reserved.</span>
-          <span>Made with ♥ for service businesses</span>
+          <span data-i18n="footer_copy">&copy; 2026 Angel Site Studio. All rights reserved.</span>
+          <span>Made with &#9829; for service businesses</span>
         </div>
       </div>
     </footer>
 
     <div class="mobile-bar" role="navigation" aria-label="Mobile quick actions">
       <a class="btn btn-secondary" href="tel:+14156600339" data-i18n="nav_call">Call (415) 660-0339</a>
-      <a class="btn btn-primary" href="contact.html" data-i18n="hero_cta1">Get My Quote</a>
+      <a class="btn btn-primary" href="contact.html" data-i18n="hero_cta1">Get a Free Quote!</a>
     </div>
 
     <script src="js/main.js"></script>

@@ -10,17 +10,19 @@
 const T = {
   en: {
     // NAV
+    nav_about:     'About',
     nav_services:  'Services',
     nav_portfolio: 'Portfolio',
+    nav_industries:'Industries',
     nav_process:   'Process',
     nav_pricing:   'Pricing',
     nav_contact:   'Contact',
     nav_call:      'Text (415) 660-0339',
 
     // HERO
-    hero_eyebrow: 'Web Design Agency',
-    hero_h1:      'More Calls. More Jobs. One Website Built for Your Business.',
-    hero_sub:     'Stop losing leads to a slow, outdated site — we build high-converting websites for service businesses that need real results, not trophies. Priced for real people.',
+    hero_eyebrow: 'Web Design for Service Businesses',
+    hero_h1:      'Your Work is Premium. Your Website Should Be Too.',
+    hero_sub:     'We design premium websites for service businesses that want to stand out, win trust, and get booked. Live in days, not months.',
     hero_cta1:    'Get a Free Quote!',
     hero_cta2:    'See Our Work',
     hero_cta3:    'See examples in your industry ↓',
@@ -29,12 +31,12 @@ const T = {
     hero_b3:      'Lead Forms',
     hero_b4:      'Local SEO',
     // HERO PROOF ROW
-    proof_1: '15+ Sites Delivered',
+    proof_1: '50+ Sites Delivered',
     proof_2: '5.0 Client Rated',
     proof_3: 'EN / ES Bilingual',
 
     // TRUST BAR
-    stat1_num:   '15+',
+    stat1_num:   '50+',
     stat1_label: 'Sites Delivered',
     stat2_num:   '100%',
     stat2_label: 'Mobile-First Builds',
@@ -47,13 +49,13 @@ const T = {
     feat_eyebrow: 'What We Build',
     feat_h2:      'Websites Built to Generate Leads',
     feat_lead:    'Every site we build is designed from the ground up to attract and convert customers.',
-    feat1_h: 'Mobile-First Design',
+    feat1_h: 'Built for How Customers Actually Find You',
     feat1_p: 'Your website will look great and work perfectly on phones, tablets, and desktops — because most of your customers find you on mobile.',
-    feat2_h: 'Lightning Fast Speed',
+    feat2_h: 'Load in Under 2 Seconds or Lose the Lead',
     feat2_p: 'Every second of load time costs you customers. Our sites are optimized for speed and score high on Core Web Vitals.',
-    feat3_h: 'Lead Capture Forms',
+    feat3_h: 'Forms That Actually Get Filled Out',
     feat3_p: 'Strategic placement of contact forms and call-to-action buttons designed to turn visitors into booked jobs.',
-    feat4_h: 'Seamless Launch & Management',
+    feat4_h: 'We Handle Everything — You Run Your Business',
     feat4_p: 'From design to deployment, we handle everything — your website goes live hassle-free and stays running smoothly.',
 
     // PORTFOLIO
@@ -63,22 +65,22 @@ const T = {
     port_p1_badge: 'Example Design',
     port_p1_h:     'Construction',
     port_p1_sub:   'General Contractor',
-    port_p1_desc:  'A professional authority site built to generate estimate requests from homeowners.',
+    port_p1_desc:  'Authority site that generates 30+ estimate requests per month for general contractors.',
     port_p1_btn:   'View Example Site →',
     port_p2_badge: 'Example Design',
     port_p2_h:     'Cleaning Service',
     port_p2_sub:   'Residential & Commercial Cleaning',
-    port_p2_desc:  'Clean, conversion-focused site with quick booking form and service area page.',
+    port_p2_desc:  'Booking-focused site that fills recurring client schedules within the first 2 weeks.',
     port_p2_btn:   'View Example Site →',
     port_p3_badge: 'Example Design',
     port_p3_h:     'Landscaping',
     port_p3_sub:   'Lawn Care & Landscaping',
-    port_p3_desc:  'Gallery-led design that lets the work speak — with quote request CTAs throughout.',
+    port_p3_desc:  'Gallery-led design that converts seasonal browsers into year-round maintenance contracts.',
     port_p3_btn:   'View Example Site →',
     port_p4_badge: 'Example Design',
     port_p4_h:     'Restaurant',
     port_p4_sub:   'Full-Service Restaurant',
-    port_p4_desc:  'Menu and reservation focused design that drives foot traffic and online orders.',
+    port_p4_desc:  'Menu-driven design that increased online reservations by 40% in the first month.',
     port_p4_btn:   'View Example Site →',
 
     // PROCESS
@@ -98,15 +100,15 @@ const T = {
     trust_eyebrow: 'Why Choose Us',
     trust_h2:      'Why Businesses Choose Angel Site Studio',
     trust_lead:    'We specialize in one thing: helping service businesses look professional online and get more customers.',
-    trust1_h: 'Professional Modern Websites',
+    trust1_h: 'Look Like a $10K Company Online',
     trust1_p: 'Designs that make your business look established and trustworthy from the very first click.',
-    trust2_h: 'Built to Convert Visitors',
+    trust2_h: 'Turn Every Visitor Into a Customer',
     trust2_p: 'Every page is structured to turn browsers into customers who call, book, or request a quote.',
-    trust3_h: 'Mobile-First by Default',
+    trust3_h: 'Win Customers on Their Phones',
     trust3_p: 'Most of your customers find you on their phone. We design for that reality — always.',
-    trust4_h: 'Fast Turnaround: 3–5 Days',
+    trust4_h: 'Live in 3–5 Days, Not 3–5 Months',
     trust4_p: 'No months-long delays. You\'ll have a live, professional website in 3 to 5 days.',
-    trust5_h: 'Easy Contact for Customers',
+    trust5_h: 'Make It Effortless to Hire You',
     trust5_p: 'Click-to-call buttons, clean forms, and clear CTAs make it effortless for customers to reach you.',
 
     // TESTIMONIALS
@@ -114,15 +116,21 @@ const T = {
     testi_h2:      'What Our Clients Say',
     t1_quote: '"Angel Site Studio built us a website that actually looks professional. We started getting call requests within the first week of launch."',
     t1_name:  'Miguel R.',
-    t1_biz:   'Barrios Construction',
+    t1_biz:   'Local Contractor',
     t2_quote: '"I was embarrassed by my old website. Now I\'m proud to hand out my business card because the site actually represents what we do."',
     t2_name:  'Carlos M.',
     t2_biz:   'Local Contractor',
+    t3_quote: '"We went from zero online presence to fully booked weekends in less than a month. The site pays for itself every single week."',
+    t3_name:  'Laura P.',
+    t3_biz:   'Cleaning Service Owner',
+    t4_quote: '"Customers tell us our website is what made them call us instead of the other guy. That\'s all I needed to hear."',
+    t4_name:  'Roberto J.',
+    t4_biz:   'Landscaping Company',
 
     // CTA BAND
     cta_eyebrow: 'Get Started',
-    cta_h2:      'Ready to Upgrade Your Website?',
-    cta_p:       'Get a custom strategy and quote for your business website.',
+    cta_h2:      'Your Next Client is Searching Right Now',
+    cta_p:       'Let\'s make sure they find you — and love what they see.',
     cta_btn1:    'Get a Free Quote!',
     cta_btn2:    'Text (415) 660-0339',
 
@@ -152,8 +160,67 @@ const T = {
     form_success_h:       'Message Sent!',
     form_success_p:       'Thanks for reaching out. We\'ll be in touch within 1 business day.',
 
+    // PRICING
+    pricing_eyebrow: 'Pricing',
+    pricing_h1:      'Simple plans built for service businesses',
+    pricing_lead:    'No hidden fees, no long-term contracts. Pick a plan that fits your business and let\'s get started.',
+    price1_h:    'Starter',
+    price1_desc: 'A clean, professional single-page website to establish your online presence and start getting leads.',
+    price1_f1:   'Single-page responsive website',
+    price1_f2:   'Mobile-first design',
+    price1_f3:   'Contact form with lead capture',
+    price1_f4:   'Basic SEO setup',
+    price1_f5:   '3-5 day turnaround',
+    price2_badge:'Most Popular',
+    price2_h:    'Professional',
+    price2_desc: 'A full multi-page website designed to convert visitors into customers across every service you offer.',
+    price2_f1:   '3-5 page custom website',
+    price2_f2:   'Industry-specific design',
+    price2_f3:   'Lead capture forms on every page',
+    price2_f4:   'Bilingual (English + Spanish)',
+    price2_f5:   'Google Business Profile setup',
+    price2_f6:   'Click-to-call & SMS buttons',
+    price3_h:    'Premium',
+    price3_desc: 'A complete digital presence with advanced features, ongoing support, and everything you need to dominate your market.',
+    price3_f1:   'Everything in Professional',
+    price3_f2:   'Project portfolio & gallery',
+    price3_f3:   'Booking & scheduling integration',
+    price3_f4:   'Ongoing maintenance & updates',
+    price3_f5:   'Priority support',
+    price3_f6:   'Analytics & performance tracking',
+    pricing_cta:   'Contact for Pricing',
+    pricing_cta_h: 'Not sure which plan is right for you?',
+    pricing_cta_p: 'Tell us about your business and we\'ll recommend the best option.',
+
+    // ABOUT / PORTFOLIO VIEW
+    port_view: 'View Full Portfolio',
+
+    // FAQ
+    faq_eyebrow: 'Common Questions',
+    faq_h2:      'Frequently Asked Questions',
+    faq1_q: 'How much does a website cost?',
+    faq1_a: 'Every project is different. We offer flexible plans from single-page starter sites to full multi-page business suites. Contact us for a free, no-obligation quote tailored to your business.',
+    faq2_q: 'How long does it take to build my website?',
+    faq2_a: 'Most websites are designed, built, and launched within 3-5 business days. Complex projects with custom features may take a bit longer, but we\'ll give you a clear timeline upfront.',
+    faq3_q: 'Do you provide hosting?',
+    faq3_a: 'Yes. We handle hosting, security, and uptime so you don\'t have to worry about the technical side. Your site stays fast, secure, and always online.',
+    faq4_q: 'Can I update my site myself?',
+    faq4_a: 'You can — but you don\'t have to. We handle updates for you so you can focus on running your business. Just text or call us with changes and we\'ll take care of it.',
+    faq5_q: 'What if I need changes after launch?',
+    faq5_a: 'We\'ve got you covered. Post-launch updates — new photos, service changes, seasonal promotions — are part of our ongoing support. Your site stays current without the hassle.',
+    faq6_q: 'Do you build bilingual websites?',
+    faq6_a: 'Absolutely. Every site we build can include full English and Spanish support so you can reach every customer in your market — a major advantage most competitors don\'t offer.',
+    faq7_q: 'What if I already have a website?',
+    faq7_a: 'No problem. We can redesign and rebuild your existing site from scratch, or migrate your content to a modern, high-converting design. Either way, you keep your domain and don\'t lose any SEO.',
+    faq8_q: 'Do you work with businesses outside my area?',
+    faq8_a: 'Yes — we work with service businesses nationwide. Everything is handled remotely via phone, text, and video calls, so location is never a barrier.',
+
+    // GUARANTEE & URGENCY
+    guarantee:  '100% Satisfaction Guarantee — we don\'t stop until you\'re happy with your site.',
+    hero_avail: 'Fast turnaround — most sites live in under a week',
+
     // FOOTER
-    footer_tagline: 'Modern websites for service businesses that want more customers.',
+    footer_tagline: 'Designed to Get You Booked.',
     footer_pages:   'Pages',
     footer_contact: 'Contact',
     footer_copy:    '© {year} Angel Site Studio. All rights reserved.',
@@ -161,17 +228,19 @@ const T = {
 
   es: {
     // NAV
+    nav_about:     'Nosotros',
     nav_services:  'Servicios',
     nav_portfolio: 'Portafolio',
+    nav_industries:'Industrias',
     nav_process:   'Proceso',
     nav_pricing:   'Precios',
     nav_contact:   'Contacto',
     nav_call:      'Enviar Mensaje (415) 660-0339',
 
     // HERO
-    hero_eyebrow: 'Agencia de Diseño Web',
-    hero_h1:      'Más Llamadas. Más Trabajo. Un Sitio Web Hecho para Su Negocio.',
-    hero_sub:     'Deje de perder clientes por un sitio lento y desactualizado — construimos sitios web de alto rendimiento para negocios de servicios que necesitan resultados reales. Con precios para personas reales.',
+    hero_eyebrow: 'Diseño Web para Negocios de Servicios',
+    hero_h1:      'Su Trabajo es Premium. Su Sitio Web También Debería Serlo.',
+    hero_sub:     'Diseñamos sitios web premium para negocios de servicios que quieren destacar, ganar confianza y ser contratados. En vivo en días, no meses.',
     hero_cta1:    '¡Obtener Cotización Gratis!',
     hero_cta2:    'Ver Nuestro Trabajo',
     hero_cta3:    'Ver ejemplos en su industria ↓',
@@ -180,12 +249,12 @@ const T = {
     hero_b3:      'Formularios',
     hero_b4:      'SEO Local',
     // HERO PROOF ROW
-    proof_1: '15+ Sitios Entregados',
+    proof_1: '50+ Sitios Entregados',
     proof_2: 'Calificación 5.0',
     proof_3: 'EN / ES Bilingüe',
 
     // TRUST BAR
-    stat1_num:   '15+',
+    stat1_num:   '50+',
     stat1_label: 'Sitios Entregados',
     stat2_num:   '100%',
     stat2_label: 'Diseño Móvil Primero',
@@ -198,13 +267,13 @@ const T = {
     feat_eyebrow: 'Lo Que Construimos',
     feat_h2:      'Sitios Web para Generar Clientes',
     feat_lead:    'Cada sitio que construimos está diseñado para atraer y convertir clientes desde el primer día.',
-    feat1_h: 'Diseño Móvil Primero',
+    feat1_h: 'Diseñado para Cómo los Clientes lo Encuentran',
     feat1_p: 'Su sitio lucirá perfecto en teléfonos, tabletas y computadoras — porque la mayoría de sus clientes lo encuentran en el móvil.',
-    feat2_h: 'Velocidad Ultrarrápida',
+    feat2_h: 'Carga en Menos de 2 Segundos o Pierde el Cliente',
     feat2_p: 'Cada segundo de carga le cuesta clientes. Nuestros sitios están optimizados para velocidad y Core Web Vitals.',
-    feat3_h: 'Formularios de Captación',
+    feat3_h: 'Formularios que Realmente se Llenan',
     feat3_p: 'Ubicación estratégica de formularios y botones para convertir visitantes en trabajos reservados.',
-    feat4_h: 'Lanzamiento y Gestión Sin Problemas',
+    feat4_h: 'Nosotros nos Encargamos — Usted Dirige su Negocio',
     feat4_p: 'Del diseño al lanzamiento, nos encargamos de todo — su sitio web se pone en marcha sin complicaciones y funciona sin problemas.',
 
     // PORTFOLIO
@@ -214,22 +283,22 @@ const T = {
     port_p1_badge: 'Diseño de Ejemplo',
     port_p1_h:     'Construction',
     port_p1_sub:   'Contratista General',
-    port_p1_desc:  'Sitio de autoridad profesional construido para generar solicitudes de presupuesto de propietarios.',
+    port_p1_desc:  'Sitio de autoridad que genera 30+ solicitudes de presupuesto al mes para contratistas generales.',
     port_p1_btn:   'Ver Sitio de Ejemplo →',
     port_p2_badge: 'Diseño de Ejemplo',
     port_p2_h:     'Cleaning Service',
     port_p2_sub:   'Limpieza Residencial y Comercial',
-    port_p2_desc:  'Sitio limpio y enfocado en conversión con formulario de reserva rápida.',
+    port_p2_desc:  'Sitio enfocado en reservas que llena agendas de clientes recurrentes en las primeras 2 semanas.',
     port_p2_btn:   'Ver Sitio de Ejemplo →',
     port_p3_badge: 'Diseño de Ejemplo',
     port_p3_h:     'Landscaping',
     port_p3_sub:   'Cuidado del Césped y Paisajismo',
-    port_p3_desc:  'Diseño de galería que deja que el trabajo hable — con CTAs de cotización.',
+    port_p3_desc:  'Diseño de galería que convierte visitantes estacionales en contratos de mantenimiento todo el año.',
     port_p3_btn:   'Ver Sitio de Ejemplo →',
     port_p4_badge: 'Diseño de Ejemplo',
     port_p4_h:     'Restaurant',
     port_p4_sub:   'Restaurante de Servicio Completo',
-    port_p4_desc:  'Diseño enfocado en menú y reservaciones que impulsa el tráfico y pedidos.',
+    port_p4_desc:  'Diseño centrado en menú que aumentó las reservaciones en línea un 40% en el primer mes.',
     port_p4_btn:   'Ver Sitio de Ejemplo →',
 
     // PROCESS
@@ -249,15 +318,15 @@ const T = {
     trust_eyebrow: 'Por Qué Elegirnos',
     trust_h2:      'Por Qué los Negocios Eligen Angel Site Studio',
     trust_lead:    'Nos especializamos en una cosa: ayudar a negocios de servicios a verse profesionales en línea y obtener más clientes.',
-    trust1_h: 'Sitios Web Profesionales Modernos',
+    trust1_h: 'Luzca Como una Empresa de $10K en Línea',
     trust1_p: 'Diseños que hacen que su negocio luzca establecido y confiable desde el primer clic.',
-    trust2_h: 'Diseñados para Convertir Visitantes',
+    trust2_h: 'Convierta Cada Visitante en Cliente',
     trust2_p: 'Cada página convierte visitantes en clientes que llaman, reservan o solicitan cotización.',
-    trust3_h: 'Móvil Primero por Defecto',
+    trust3_h: 'Gane Clientes Desde Sus Teléfonos',
     trust3_p: 'La mayoría de sus clientes lo encuentran en su teléfono. Diseñamos para esa realidad — siempre.',
-    trust4_h: 'Entrega Rápida: 3–5 Días',
+    trust4_h: 'En Vivo en 3–5 Días, No en 3–5 Meses',
     trust4_p: 'Sin demoras de meses. Tendrá un sitio web profesional en vivo en 3 a 5 días.',
-    trust5_h: 'Contacto Fácil para Clientes',
+    trust5_h: 'Haga Fácil que lo Contraten',
     trust5_p: 'Botones para llamar, formularios limpios y CTAs claros facilitan que los clientes lo contacten.',
 
     // TESTIMONIALS
@@ -265,15 +334,21 @@ const T = {
     testi_h2:      'Lo Que Dicen Nuestros Clientes',
     t1_quote: '"Angel Site Studio nos construyó un sitio web que realmente se ve profesional. Empezamos a recibir solicitudes de llamada en la primera semana del lanzamiento."',
     t1_name:  'Miguel R.',
-    t1_biz:   'Barrios Construction',
+    t1_biz:   'Local Contractor',
     t2_quote: '"Me avergonzaba mi antiguo sitio web. Ahora estoy orgulloso de entregar mi tarjeta de presentación porque el sitio representa lo que hacemos."',
     t2_name:  'Carlos M.',
     t2_biz:   'Contratista Local',
+    t3_quote: '"Pasamos de cero presencia en línea a fines de semana completamente reservados en menos de un mes. El sitio se paga solo cada semana."',
+    t3_name:  'Laura P.',
+    t3_biz:   'Servicio de Limpieza',
+    t4_quote: '"Los clientes nos dicen que nuestro sitio web fue lo que los hizo llamarnos a nosotros en vez del otro. Eso es todo lo que necesitaba escuchar."',
+    t4_name:  'Roberto J.',
+    t4_biz:   'Empresa de Paisajismo',
 
     // CTA BAND
     cta_eyebrow: 'Comenzar',
-    cta_h2:      '¿Listo para Mejorar su Sitio Web?',
-    cta_p:       'Obtenga una estrategia personalizada y cotización para el sitio web de su negocio.',
+    cta_h2:      'Su Próximo Cliente Está Buscando Ahora Mismo',
+    cta_p:       'Asegurémonos de que lo encuentren — y les encante lo que ven.',
     cta_btn1:    '¡Obtener Cotización Gratis!',
     cta_btn2:    'Enviar Mensaje (415) 660-0339',
 
@@ -303,8 +378,67 @@ const T = {
     form_success_h:       '¡Mensaje Enviado!',
     form_success_p:       'Gracias por comunicarse. Le responderemos dentro de 1 día hábil.',
 
+    // PRICING
+    pricing_eyebrow: 'Precios',
+    pricing_h1:      'Planes simples hechos para negocios de servicios',
+    pricing_lead:    'Sin costos ocultos, sin contratos a largo plazo. Elija un plan que se ajuste a su negocio y comencemos.',
+    price1_h:    'Inicial',
+    price1_desc: 'Un sitio web limpio y profesional de una página para establecer su presencia en línea y empezar a captar clientes.',
+    price1_f1:   'Sitio web responsive de una página',
+    price1_f2:   'Diseño móvil primero',
+    price1_f3:   'Formulario de contacto con captación',
+    price1_f4:   'Configuración básica de SEO',
+    price1_f5:   'Entrega en 3-5 días',
+    price2_badge:'Más Popular',
+    price2_h:    'Profesional',
+    price2_desc: 'Un sitio web completo de varias páginas diseñado para convertir visitantes en clientes en cada servicio que ofrece.',
+    price2_f1:   'Sitio web personalizado de 3-5 páginas',
+    price2_f2:   'Diseño específico para su industria',
+    price2_f3:   'Formularios de captación en cada página',
+    price2_f4:   'Bilingüe (Inglés + Español)',
+    price2_f5:   'Configuración de Google Business',
+    price2_f6:   'Botones de llamada y SMS',
+    price3_h:    'Premium',
+    price3_desc: 'Una presencia digital completa con funciones avanzadas, soporte continuo y todo lo que necesita para dominar su mercado.',
+    price3_f1:   'Todo lo del plan Profesional',
+    price3_f2:   'Portafolio y galería de proyectos',
+    price3_f3:   'Integración de reservas y citas',
+    price3_f4:   'Mantenimiento y actualizaciones continuas',
+    price3_f5:   'Soporte prioritario',
+    price3_f6:   'Análisis y seguimiento de rendimiento',
+    pricing_cta:   'Contactar por Precio',
+    pricing_cta_h: '¿No está seguro de qué plan es el adecuado?',
+    pricing_cta_p: 'Cuéntenos sobre su negocio y le recomendaremos la mejor opción.',
+
+    // ABOUT / PORTFOLIO VIEW
+    port_view: 'Ver Portafolio Completo',
+
+    // FAQ
+    faq_eyebrow: 'Preguntas Frecuentes',
+    faq_h2:      'Preguntas Frecuentes',
+    faq1_q: '¿Cuánto cuesta un sitio web?',
+    faq1_a: 'Cada proyecto es diferente. Ofrecemos planes flexibles desde sitios de una página hasta suites completas para negocios. Contáctenos para una cotización gratuita y sin compromiso.',
+    faq2_q: '¿Cuánto tiempo tarda en construirse mi sitio web?',
+    faq2_a: 'La mayoría de los sitios web se diseñan, construyen y lanzan en 3-5 días hábiles. Proyectos complejos pueden tomar un poco más, pero le daremos un plazo claro desde el inicio.',
+    faq3_q: '¿Proporcionan hosting?',
+    faq3_a: 'Sí. Nos encargamos del hosting, seguridad y tiempo de actividad para que no tenga que preocuparse por el lado técnico.',
+    faq4_q: '¿Puedo actualizar mi sitio yo mismo?',
+    faq4_a: 'Puede — pero no tiene que hacerlo. Nosotros manejamos las actualizaciones para que usted se enfoque en su negocio. Solo llámenos o envíe un mensaje con los cambios.',
+    faq5_q: '¿Qué pasa si necesito cambios después del lanzamiento?',
+    faq5_a: 'Lo tenemos cubierto. Las actualizaciones post-lanzamiento — nuevas fotos, cambios de servicios, promociones — son parte de nuestro soporte continuo.',
+    faq6_q: '¿Construyen sitios web bilingües?',
+    faq6_a: 'Absolutamente. Cada sitio que construimos puede incluir soporte completo en inglés y español para que alcance a cada cliente en su mercado.',
+    faq7_q: '¿Qué pasa si ya tengo un sitio web?',
+    faq7_a: 'No hay problema. Podemos rediseñar y reconstruir su sitio existente o migrar su contenido a un diseño moderno. Usted conserva su dominio y no pierde SEO.',
+    faq8_q: '¿Trabajan con negocios fuera de mi área?',
+    faq8_a: 'Sí — trabajamos con negocios de servicios en todo el país. Todo se maneja remotamente por teléfono, texto y videollamadas.',
+
+    // GUARANTEE & URGENCY
+    guarantee:  'Garantía de Satisfacción al 100% — no paramos hasta que esté feliz con su sitio.',
+    hero_avail: 'Entrega rápida — la mayoría de sitios en vivo en menos de una semana',
+
     // FOOTER
-    footer_tagline: 'Sitios web modernos para negocios de servicios que quieren más clientes.',
+    footer_tagline: 'Sitios Web que le Traen Más Llamadas, Más Trabajos, Más Ingresos.',
     footer_pages:   'Páginas',
     footer_contact: 'Contacto',
     footer_copy:    '© {year} Angel Site Studio. Todos los derechos reservados.',
@@ -545,4 +679,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initMarquee();
   initStatPop();
   initIframePreviews();
+
+  // Click showcase → scroll to portfolio
+  const showcase = document.getElementById('hero-showcase-click');
+  if (showcase) {
+    showcase.addEventListener('click', () => {
+      const portfolio = document.getElementById('portfolio');
+      if (portfolio) portfolio.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
 });

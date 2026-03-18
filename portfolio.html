@@ -3,57 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>Portfolio | Angel Site Studio</title>
     <meta name="description" content="Browse example websites we've built for service businesses — construction, cleaning, landscaping, restaurants, and more." />
     <link rel="stylesheet" href="css/styles.css" />
-    <style>
-      /* PAGE HERO */
-      .page-hero {
-        padding: 120px 0 60px;
-        text-align: center;
-        background: var(--hero-bg, #060915);
-        color: #fff;
-      }
-      .page-hero .eyebrow {
-        color: var(--cta, #F97316);
-        display: inline-block;
-        margin-bottom: 1rem;
-      }
-      .page-hero h1 {
-        font-family: 'DM Sans', sans-serif;
-        font-size: clamp(2rem, 4vw, 3rem);
-        font-weight: 800;
-        margin-bottom: 1rem;
-        color: #fff;
-      }
-      .page-hero .lead {
-        color: rgba(255,255,255,0.6);
-        max-width: 560px;
-        margin: 0 auto;
-        font-size: 1.05rem;
-      }
-
-      /* PORTFOLIO GRID SPACING */
-      .portfolio-grid { gap: 2rem; }
-      .portfolio-grid .card-glass { padding-bottom: 1.5rem; }
-
-      /* SERVICES GRID */
-      .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
-      .svc-card {
-        background: rgba(255,255,255,0.72);
-        backdrop-filter: blur(14px);
-        border: 1px solid rgba(0,0,0,0.06);
-        border-radius: 16px;
-        padding: 2rem 1.75rem;
-        transition: transform 0.3s, box-shadow 0.3s;
-      }
-      .svc-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
-      .svc-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
-      .svc-card h3 { font-family: 'DM Sans', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--heading); }
-      .svc-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
-      @media (max-width: 900px) { .svc-grid { grid-template-columns: repeat(2, 1fr); } }
-      @media (max-width: 640px) { .svc-grid { grid-template-columns: 1fr; } }
-    </style>
   </head>
   <body>
 
@@ -85,11 +39,11 @@
           <span></span><span></span><span></span>
         </button>
         <nav class="nav" id="main-nav" role="navigation">
-          <a href="services.html"  data-i18n="nav_services">Services</a>
-          <a href="index.html#portfolio" data-i18n="nav_portfolio" aria-current="page">Portfolio</a>
-          <a href="index.html#process" data-i18n="nav_process">Process</a>
-          <a href="pricing.html"   data-i18n="nav_pricing">Pricing</a>
-          <a href="contact.html"   data-i18n="nav_contact">Contact</a>
+          <a href="portfolio.html" data-i18n="nav_portfolio" aria-current="page">Portfolio</a>
+          <a href="pricing.html" data-i18n="nav_pricing">Pricing</a>
+          <a href="about.html" data-i18n="nav_about">About</a>
+          <a href="contact.html" data-i18n="nav_contact">Contact</a>
+
           <a class="btn-call" href="sms:+14156600339" data-i18n="nav_call">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
             Text (415) 660-0339
@@ -109,7 +63,7 @@
       </section>
 
       <!-- EXAMPLE SITES -->
-      <section class="section bg-ivory">
+      <section class="section-sm bg-ivory">
         <div class="container">
           <div class="portfolio-grid">
 
@@ -189,68 +143,37 @@
         </div>
       </section>
 
-      <!-- SERVICES WE DESIGN FOR -->
-      <section class="section-sm bg-white">
+      <!-- SERVICES — merged below portfolio -->
+      <section class="services-page" style="padding-top:var(--sec-sm);padding-bottom:var(--sec-sm);">
         <div class="container">
-          <div class="section-header">
-            <span class="eyebrow">Industries</span>
-            <h2>Services We Design Websites For</h2>
-            <p class="lead">If your business wins through reputation and customer trust, we build for you.</p>
+          <div class="services-header-compact">
+            <h2>What We Do</h2>
+          </div>
+          <div class="services-compact-grid">
+            <div class="svc-compact"><div class="svc-icon">🎨</div><div><h3>Design</h3><p>Premium layouts tailored to your industry — clean, modern, built to impress.</p></div></div>
+            <div class="svc-compact"><div class="svc-icon">⚡</div><div><h3>Development</h3><p>Fast, responsive code that works perfectly on phones, tablets, and desktops.</p></div></div>
+            <div class="svc-compact"><div class="svc-icon">🛡️</div><div><h3>Hosting &amp; Security</h3><p>Reliable hosting, SSL, and technical upkeep so your site stays online and safe.</p></div></div>
+            <div class="svc-compact"><div class="svc-icon">✏️</div><div><h3>Updates</h3><p>Need changes? Text us. Photos, copy, pricing — we handle it fast.</p></div></div>
+            <div class="svc-compact"><div class="svc-icon">📱</div><div><h3>Mobile-First</h3><p>Designed for how your customers actually find you — on their phones.</p></div></div>
+            <div class="svc-compact"><div class="svc-icon">🔍</div><div><h3>SEO &amp; Google</h3><p>Built to rank locally. Google Business Profile setup included.</p></div></div>
+          </div>
+          <!-- Industries we serve -->
+          <div class="industries-strip">
+            <p class="industries-label">Industries We Serve</p>
+            <div class="industries-row">
+              <span>🏗️ Contractors</span>
+              <span>🌿 Landscaping</span>
+              <span>🧹 Cleaning</span>
+              <span>❄️ HVAC</span>
+              <span>🔧 Plumbing</span>
+              <span>⚡ Electrical</span>
+              <span>💦 Pressure Washing</span>
+              <span>✂️ Barbers</span>
+              <span>🍽️ Restaurants</span>
+            </div>
           </div>
 
-          <div class="svc-grid">
-
-            <div class="svc-card">
-              <div class="svc-icon">🏗️</div>
-              <h3>Construction &amp; Contractors</h3>
-              <p>Authority sites that establish credibility and drive high-value project inquiries — from general contractors to specialty trades.</p>
-            </div>
-
-            <div class="svc-card">
-              <div class="svc-icon">🧹</div>
-              <h3>Cleaning Services</h3>
-              <p>Booking-focused sites with service area pages, pricing transparency, and quick contact forms that convert browsers into recurring clients.</p>
-            </div>
-
-            <div class="svc-card">
-              <div class="svc-icon">🌿</div>
-              <h3>Landscaping &amp; Lawn Care</h3>
-              <p>Gallery-led designs that showcase your best work, highlight seasonal services, and make it easy for homeowners to request quotes.</p>
-            </div>
-
-            <div class="svc-card">
-              <div class="svc-icon">🍽️</div>
-              <h3>Restaurants &amp; Food Service</h3>
-              <p>Menu-driven sites with online ordering integration, reservation flows, and location details that fill tables and drive takeout orders.</p>
-            </div>
-
-            <div class="svc-card">
-              <div class="svc-icon">❄️</div>
-              <h3>HVAC, Plumbing &amp; Electrical</h3>
-              <p>Emergency-ready sites with 24/7 CTAs, financing highlights, and service area pages designed for homeowners who need help now.</p>
-            </div>
-
-            <div class="svc-card">
-              <div class="svc-icon">🔧</div>
-              <h3>Auto Repair &amp; Other Trades</h3>
-              <p>Trust-building sites with review integration, appointment scheduling, and clear service breakdowns for every local trade.</p>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <!-- CTA -->
-      <section class="section-sm">
-        <div class="container">
-          <div class="cta-band" style="text-align:center;">
-            <h2>Want a website like these?</h2>
-            <p>Get a free quote — we'll design a site that fits your business and starts bringing in leads.</p>
-            <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
-              <a class="btn btn-primary btn-lg" href="contact.html">Get a Free Quote!</a>
-              <a class="btn btn-ghost btn-lg" href="sms:+14156600339">Text (415) 660-0339</a>
-            </div>
-          </div>
+          <p class="services-cta-line">Ready to get started? <a href="contact.html">Get a free quote</a> or <a href="sms:+14156600339">text (415) 660-0339</a>.</p>
         </div>
       </section>
 
@@ -278,14 +201,13 @@
               </span>
               Angel Site Studio
             </a>
-            <p>Modern websites for service businesses that want more customers.</p>
+            <p>Designed to Get You Booked.</p>
           </div>
           <nav class="footer-col" aria-label="Site pages">
             <h4>Pages</h4>
-            <a href="services.html">Services</a>
-            <a href="index.html#portfolio">Portfolio</a>
-            <a href="index.html#process">Process</a>
+            <a href="portfolio.html">Portfolio</a>
             <a href="pricing.html">Pricing</a>
+            <a href="about.html">About</a>
             <a href="contact.html">Contact</a>
           </nav>
           <div class="footer-col">
@@ -295,7 +217,7 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <span>© 2025 Angel Site Studio. All rights reserved.</span>
+          <span>&copy; 2026 Angel Site Studio. All rights reserved.</span>
           <span>Made with ♥ for service businesses</span>
         </div>
       </div>
