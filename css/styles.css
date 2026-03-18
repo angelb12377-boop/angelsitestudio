@@ -123,11 +123,57 @@ p  { color: var(--muted); line-height: 1.7; }
 .section-header { text-align: center; margin-bottom: 2.5rem; }
 .section-header .lead { margin: 0.75rem auto 0; }
 
-/* --- Industries strip (portfolio page) --- */
+/* --- Portfolio CTA glass card with bubbles --- */
+.portfolio-cta-card {
+  position: relative;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  text-align: center;
+  overflow: hidden;
+}
+.portfolio-cta-inner { position: relative; z-index: 2; }
+.portfolio-cta-card h2 { font-size: clamp(1.4rem, 3vw, 1.8rem); font-weight: 800; margin-bottom: 0.5rem; }
+.portfolio-cta-card p { color: var(--muted); margin-bottom: 1.5rem; font-size: 0.95rem; }
+.portfolio-cta-bubble {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+}
+.portfolio-cta-bubble-1 {
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 70%);
+  top: -60px; right: -40px;
+}
+.portfolio-cta-bubble-2 {
+  width: 160px; height: 160px;
+  background: radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%);
+  bottom: -50px; left: -30px;
+}
+
+/* --- Industries bubbles (portfolio page) --- */
 .industries-strip { margin-top: 2rem; text-align: center; }
-.industries-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
-.industries-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1rem; }
-.industries-row span { font-size: 0.78rem; color: var(--text-secondary); white-space: nowrap; }
+.industries-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+.industries-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+.industries-row span {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  transition: all 0.2s;
+}
+.industries-row span:hover {
+  background: var(--cta-light);
+  border-color: rgba(245,158,11,0.2);
+  color: var(--cta-dark);
+  transform: translateY(-1px);
+}
 
 /* --- Services page (compact) --- */
 .services-page { padding: 110px 0 var(--sec-sm); background: var(--bg); }
@@ -157,7 +203,7 @@ p  { color: var(--muted); line-height: 1.7; }
 .pricing-note a { color: var(--cta-dark); font-weight: 600; }
 
 /* --- Contact page (compact single column) --- */
-.contact-page { padding: 110px 0 var(--sec-sm); background: var(--bg); }
+.contact-page { padding: 110px 0 5rem; background: var(--bg); }
 .contact-center { max-width: 560px; margin: 0 auto; text-align: center; }
 .contact-center h1 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; margin-bottom: 0.5rem; }
 .contact-sub { color: var(--muted); margin-bottom: 1rem; font-size: 0.95rem; }
@@ -168,6 +214,48 @@ p  { color: var(--muted); line-height: 1.7; }
 .contact-center .form-field label { font-size: 0.82rem; }
 .contact-center input, .contact-center textarea { font-size: 0.9rem; padding: 0.6rem 0.85rem; }
 .contact-center textarea { resize: vertical; }
+
+/* --- Contact page footer (compact, pinned to bottom) --- */
+.contact-footer {
+  padding: 1.5rem 0;
+  background: var(--bg-soft);
+  border-top: 1px solid rgba(0,0,0,0.04);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+.contact-footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.contact-footer-brand {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--text);
+}
+.contact-footer-links {
+  display: flex;
+  gap: 1.25rem;
+}
+.contact-footer-links a {
+  font-size: 0.78rem;
+  color: var(--muted);
+  transition: color 0.15s;
+}
+.contact-footer-links a:hover { color: var(--cta-dark); }
+.contact-footer-copy {
+  font-size: 0.72rem;
+  color: var(--border-strong);
+}
+@media (max-width: 640px) {
+  .contact-footer-inner { flex-direction: column; text-align: center; }
+}
 
 /* --- About Page --- */
 
@@ -1073,7 +1161,7 @@ p  { color: var(--muted); line-height: 1.7; }
   background: linear-gradient(170deg, #ffffff 0%, #f0f2f5 40%, #e8ecf1 100%);
   position: relative;
   overflow: hidden;
-  padding: 110px 0 80px;
+  padding: 90px 0 40px;
   min-height: auto;
   display: flex;
   align-items: center;
@@ -1158,12 +1246,12 @@ p  { color: var(--muted); line-height: 1.7; }
 .hero-showcase {
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 300px;
   perspective: 800px;
 }
 .showcase-frame {
   position: absolute;
-  width: 320px;
+  width: 280px;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(15,23,42,0.18), 0 8px 24px rgba(15,23,42,0.10);
@@ -1186,7 +1274,7 @@ p  { color: var(--muted); line-height: 1.7; }
 .showcase-frame .b-dot.g { background: #28ca42; }
 .showcase-frame .b-url { font-size: 0.65rem; color: rgba(255,255,255,0.35); margin-left: 8px; }
 .showcase-frame .showcase-screen {
-  height: 200px;
+  height: 160px;
   overflow: hidden;
   position: relative;
 }
@@ -1207,26 +1295,26 @@ p  { color: var(--muted); line-height: 1.7; }
   z-index: 1;
 }
 .showcase-mid {
-  top: 35px;
-  right: 40px;
+  top: 25px;
+  right: 30px;
   transform: rotate(-1.5deg);
   z-index: 2;
 }
 .showcase-front {
-  top: 70px;
-  right: 80px;
+  top: 50px;
+  right: 60px;
   transform: rotate(-4deg);
   z-index: 3;
 }
 .showcase-front:hover { transform: rotate(-4deg) translateY(-8px); box-shadow: 0 28px 70px rgba(15,23,42,0.22); }
 @media (max-width: 900px) {
-  .hero-showcase { height: 320px; }
-  .showcase-frame { width: 260px; }
-  .showcase-frame .showcase-screen { height: 160px; }
-  .showcase-frame .showcase-screen iframe { transform: scale(0.217); }
+  .hero-showcase { height: 250px; }
+  .showcase-frame { width: 220px; }
+  .showcase-frame .showcase-screen { height: 130px; }
+  .showcase-frame .showcase-screen iframe { transform: scale(0.183); }
   .showcase-back { right: -10px; }
-  .showcase-mid { right: 10px; }
-  .showcase-front { right: 30px; }
+  .showcase-mid { right: 10px; top: 20px; }
+  .showcase-front { right: 30px; top: 40px; }
 }
 
 /* ============================================================
