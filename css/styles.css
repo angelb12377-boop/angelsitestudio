@@ -196,8 +196,7 @@ p  { color: var(--muted); line-height: 1.7; }
 .pricing-header p { color: var(--muted); font-size: 0.95rem; }
 .pricing-tier { font-family: 'DM Sans', sans-serif; font-size: 1.6rem; font-weight: 800; color: #10b981; letter-spacing: 0.05em; margin-bottom: 0.4rem; text-align: center; }
 .pricing-card { padding: 1.5rem; }
-.pricing-card .pricing-desc { font-size: 0.82rem; margin-bottom: 0.4rem; }
-.pricing-monthly { font-size: 0.75rem; font-weight: 600; color: #10b981; margin-bottom: 1rem; text-align: center; }
+.pricing-card .pricing-desc { font-size: 0.82rem; margin-bottom: 1.25rem; text-align: center; }
 .pricing-card .list-check { margin-bottom: 1.25rem; }
 .pricing-card .list-check li { font-size: 0.8rem; }
 .pricing-note { text-align: center; margin-top: 1.5rem; font-size: 0.85rem; color: var(--muted); }
